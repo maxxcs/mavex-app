@@ -1,15 +1,19 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+
+import store from '../store/store';
+import '../realtime/primus';
+import './main.css';
 
 import MainEditor from '../editor/MainEditor';
 
-import './main.css';
-import './primus';
-
 const App = props => {
     return (
-        <>
-            <MainEditor />
-        </>
+        <Provider store={store}>
+            <>
+                <MainEditor />
+            </>
+        </Provider>
     );
 };
 
