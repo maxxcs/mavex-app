@@ -1,7 +1,7 @@
 import React from 'react';
 import * as monaco from 'monaco-editor';
 
-class AnotherEditor extends React.Component {
+class Editor extends React.Component {
     constructor(props) {
         super(props); 
         this.editorRef = React.createRef();
@@ -15,6 +15,17 @@ class AnotherEditor extends React.Component {
                 language: 'javascript',
                 theme: 'vs-dark'
             });
+
+            window.editor = this.editor;
+
+            this.editor.onDidChangeModelContent(event => {
+                console.log(event);
+                window.primus.emit('editor', event);
+            });
+
+            window.primus.on('editor:reflect', data => {
+                //this.editor.executeEdits('external', data.changes);
+            });
         }
     }
 
@@ -25,4 +36,4 @@ class AnotherEditor extends React.Component {
     }
 }
 
-export default AnotherEditor;
+export default Editor;
