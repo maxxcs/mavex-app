@@ -7,7 +7,7 @@ import './main.css';
 
 import Editor from '../workspace/Editor';
 
-const App = props => {
+const App = () => {
     return (
         <Provider store={store}>
             <div>

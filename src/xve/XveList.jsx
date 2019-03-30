@@ -1,11 +1,11 @@
 import React from 'react';
 
-const SideMenu = () => {
+const XveList = () => {
     return (
         <div>
-            <h2>SideMenu</h2>
+            <h2>FileTree</h2>
         </div>
     );
 };
 
-export default SideMenu;
+export default XveList;

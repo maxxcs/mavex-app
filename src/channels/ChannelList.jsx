@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FileTree = () => {
+const ChannelList = () => {
     return (
         <div>
             <h2>FileTree</h2>
@@ -8,4 +8,4 @@ const FileTree = () => {
     );
 };
 
-export default FileTree;
+export default ChannelList;
