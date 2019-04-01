@@ -3,7 +3,7 @@ import React from 'react';
 const ProjectList = () => {
     return (
         <div>
-            <h2>FileTree</h2>
+            <h2>ProjectList</h2>
         </div>
     );
 };

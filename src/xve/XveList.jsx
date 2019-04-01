@@ -3,7 +3,7 @@ import React from 'react';
 const XveList = () => {
     return (
         <div>
-            <h2>FileTree</h2>
+            <h2>XveList</h2>
         </div>
     );
 };

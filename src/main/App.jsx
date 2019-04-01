@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import store from '../config/store';
-import '../config/realtime';
+import '../config/client';
 import './main.css';
 
 import Editor from '../workspace/Editor';

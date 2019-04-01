@@ -3,7 +3,7 @@ import React from 'react';
 const ChannelList = () => {
     return (
         <div>
-            <h2>FileTree</h2>
+            <h2>ChannelList</h2>
         </div>
     );
 };
