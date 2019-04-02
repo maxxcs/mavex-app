@@ -5,16 +5,16 @@ import store from '../config/store';
 import '../config/client';
 import './main.css';
 
-import Editor from '../workspace/Editor';
+import Editor from '../workspace/editor';
 
 const App = () => {
-    return (
-        <Provider store={store}>
-            <div>
-                <Editor />
-            </div>
-        </Provider>
-    );
+  return (
+    <Provider store={store}>
+      <div>
+        <Editor />
+      </div>
+    </Provider>
+  );
 };
 
 export default App;
