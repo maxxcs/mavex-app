@@ -1,20 +1,20 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import editorSettings from './editor-settings';
 
 const Editor = () => {
   const editorRef = useRef();
-
+  const [editor, setEditor] = useState(null);
+  
   useEffect(() => {
     if (editorRef.current) 
-      editorSettings(editorRef);
+      setEditor(editorSettings(editorRef));
+    return () => {
+      editor.dispose();
+    };
   }, []);
 
-  const typingChecker = event => {
-    //console.log(event);
-  };
-
   return (
-    <div ref={editorRef} style={{ height: 600, width: 800 }} onInput={typingChecker} />
+    <div ref={editorRef} style={{ height: 600, width: 800 }} />
   );
 }
 

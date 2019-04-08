@@ -1,8 +1,6 @@
 import * as monaco from 'monaco-editor';
-import client from '../config/client';
 
 function editorSettings(editorRef) {
-  let preventEmit = false;
   const editor = monaco.editor.create(editorRef.current, {
     value: '',
     language: 'javascript',
@@ -11,44 +9,46 @@ function editorSettings(editorRef) {
   });
   const model = editor.getModel();
   window.editor = editor;
-  editor.focus();
-  
-  if (!model.isDisposed()) {
-    client.emit('editor:isReady', {});
-  }
+  let preventEmit = false;
+  let sendContentTimeout;
+  let requestSyncTimeout;
 
   editor.onDidChangeModelContent(event => {
     if (preventEmit) return;
-    const position = editor.getPosition();
-    for (let i = 0; i < event.changes.length; i++)
-      event.changes[i].forceMoveMarkers = true;
-    client.emit('editor:contentChanged', { event, position });
-    client.emit('editor:sendFileContent', editor.getValue());
+    for (let i = 0; i < event.changes.length; i++) {
+      console.log([event.changes[i].rangeOffset, event.changes[i].text, event.changes[i].range]);
+      client.emit('editor:contentChanged', [event.changes[i].rangeOffset, event.changes[i].text, event.changes[i].range]);
+    } 
   });
 
-  client.on('server:executeEdits', data => {
-    const time = Date.now();
-    const position = editor.getPosition();
-    try {
-      preventEmit = true;
-      //editor.executeEdits('external', data.event.changes);
-      model.applyEdits(data.event.changes);
-    } finally {
-      preventEmit = false;
-      if (position.equals(data.position)) editor.setPosition(position);
-      editor.focus();
-      console.log(Date.now() - time);
-    }
+  client.on('server:executeOperation', operation => {
+    console.log(operation);
+    const [offset, text, range] = operation;
+    preventEmit = true;
+    model.applyEdits([{
+      forceMoveMarkers: true,
+      range,
+      text
+    }]);
+    preventEmit = false;
+    editor.focus();
   });
 
-  client.on('server:setFileContent', data => {
+  client.on('server:sendFileContent', data => {
     try {
       preventEmit = true;
       editor.setValue(data);
     } finally {
       preventEmit = false;
+      editor.focus();
     }
   });
+
+  if (!model.isDisposed()) {
+    //client.emit('editor:requestSync', {});
+  }
+
+  return editor;
 }
 
 export default editorSettings;
