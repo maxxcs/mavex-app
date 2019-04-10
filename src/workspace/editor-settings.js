@@ -2,6 +2,8 @@ import * as monaco from 'monaco-editor';
 import { KSeq, InsertOp, RemoveOp } from './crdt/kseq/index';
 import { Ident } from './crdt/kseq/idents/Ident';
 
+import { handleChanges } from './editor-utils';
+
 function editorSettings(editorRef) {
   const editor = monaco.editor.create(editorRef.current, {
     value: '',
@@ -14,53 +16,27 @@ function editorSettings(editorRef) {
   window.state = state;
   window.editor = editor;
   let preventEmit = false;
-  
-  /*
-  editor.onDidChangeModelContent(event => {
-    if (preventEmit) return;
-    for (let i = 0; i < event.changes.length; i++) {
-      console.log([event.changes[i].rangeOffset, event.changes[i].text, event.changes[i].range]);
-      client.emit('editor:contentChanged', [event.changes[i].rangeOffset, event.changes[i].text, event.changes[i].range]);
-    } 
-  });
-
-  client.on('server:executeOperation', operation => {
-    console.log(operation);
-    const [offset, text, range] = operation;
-    preventEmit = true;
-    model.applyEdits([{
-      forceMoveMarkers: true,
-      range,
-      text
-    }]);
-    preventEmit = false;
-    editor.focus();
-  });
-  */
 
  editor.onDidChangeModelContent(event => {
   if (preventEmit) return;
-  //console.log(event);
-  for (let i = 0; i < event.changes.length; i++) {
-    if (event.changes[i].text !== '') {
-      const characters = event.changes[i].text.split('');
-      let initialRangeOffset = event.changes[i].rangeOffset;
-      for (let c = 0; c < characters.length; c++) {
-        const operation = state.insert(characters[c], initialRangeOffset++);
-        client.emit('editor:contentChanged', operation);
-        //console.log(operation);
-      }
+  const changes = handleChanges(event.changes);
+  for (let i = 0; i < changes.length; i++) {
+    if (changes[i].type === 1) {
+      const op = state.insert(changes[i].char, changes[i].index);
+      client.emit('editor:contentChanged', op);
+    } else if (changes[i].type === 0) {
+      const op = state.remove(changes[i].index);
+      client.emit('editor:contentChanged', op);
     } else {
-      const operation = state.remove(event.changes[i].rangeOffset);
-      client.emit('editor:contentChanged', operation);
-    }    
-  } 
+      console.log('This shouldn\'t to be happen.');
+    }
+  }
 });
 
   client.on('server:executeOperation', raw => {
-    console.log(raw);
-    const id = new Ident(raw.id.time, raw.id.path);
+    //console.log(raw);
     let operation;
+    const id = new Ident(raw.id.time, raw.id.path);
     if (raw.kind === 1)
       operation = new InsertOp(raw.replica, raw.timestamp, id, raw.value);
     else 
@@ -83,8 +59,18 @@ function editorSettings(editorRef) {
     }
   });
 
+  client.on('server:sendFileContent', data => {
+    try {
+      preventEmit = true;
+      editor.setValue(data);
+    } finally {
+      preventEmit = false;
+    }
+  });
+
   if (!model.isDisposed()) {
     //client.emit('editor:requestSync', {});
+    editor.focus();
   }
 
   return editor;
