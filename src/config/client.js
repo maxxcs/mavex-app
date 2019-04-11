@@ -1,4 +1,4 @@
-const client = new Primus('http://10.132.84.47:8000');
+const client = new Primus('http://localhost:8000');
 
 window.client = client;
 

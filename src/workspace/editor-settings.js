@@ -11,7 +11,7 @@ function editorSettings(editorRef) {
     theme: 'vs-dark',
     renderFinalNewline: true
   });
-  const state = new KSeq('state'); //this need to be a unique id
+  const state = new KSeq(Date.now().toString()); //this need to be a unique id
   const model = editor.getModel();
   window.state = state;
   window.editor = editor;
@@ -56,15 +56,6 @@ function editorSettings(editorRef) {
     } finally {
       preventEmit = false;
       editor.focus();
-    }
-  });
-
-  client.on('server:sendFileContent', data => {
-    try {
-      preventEmit = true;
-      editor.setValue(data);
-    } finally {
-      preventEmit = false;
     }
   });
 
