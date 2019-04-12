@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @returns An instance of Atom<T>.
  */
 function Atom(id, value) {
-    return { id: id, value: value };
+  return { id: id, value: value };
 }
 exports.Atom = Atom;
 //# sourceMappingURL=Atom.js.map

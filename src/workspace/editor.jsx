@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import editorSettings from './editor-settings';
+import editorController from './editor-controller';
 
 const Editor = () => {
   const editorRef = useRef();
@@ -7,7 +7,7 @@ const Editor = () => {
   
   useEffect(() => {
     if (editorRef.current) 
-      setEditor(editorSettings(editorRef));
+      setEditor(editorController(editorRef));
     return () => {
       editor.dispose();
     };

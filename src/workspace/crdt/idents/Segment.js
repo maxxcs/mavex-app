@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @returns The created Segment.
  */
 function Segment(digit, replica) {
-    return { digit: digit, replica: replica };
+  return { digit: digit, replica: replica };
 }
 exports.Segment = Segment;
 //# sourceMappingURL=Segment.js.map

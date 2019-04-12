@@ -7,7 +7,8 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: __dirname + '/public',
-    filename: './app.js'
+    filename: './app.js',
+    globalObject: 'this'
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],

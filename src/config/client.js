@@ -1,6 +1,6 @@
 const client = new Primus('http://localhost:8000');
 
-window.client = client;
+//window.client = client;
 
 client.on('server:message', data => {
   console.log(data);
