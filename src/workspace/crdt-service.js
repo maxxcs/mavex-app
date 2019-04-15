@@ -8,12 +8,21 @@ export default class CrdtService {
   }
   
   executeChange(change) {
-    if (change.type === 1)
-      return this.crdt.insert(change.char, change.index);
-    else if (change.type === 0)
-      return this.crdt.remove(change.index);
-    else
+    if (change.type === 1) {
+      const op = this.crdt.insert(change.char, change.index);
+      return { op, type: 1 };
+    }
+    else if (change.type === 0) {
+      const op = this.crdt.remove(change.index);
+      return { op, type: 0 };
+    }
+    else if (change.type === -1) {
+      const op = this.crdt.remove(change.index);
+      return { op, type: -1 };
+    }
+    else {
       return new Error('Invalid change type.');
+    }
   }
 
   executeOperation(raw) {
@@ -32,5 +41,3 @@ export default class CrdtService {
     return this.crdt.toArray().join('');
   }
 }
-
-

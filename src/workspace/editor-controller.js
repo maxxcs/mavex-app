@@ -2,7 +2,6 @@ import * as monaco from 'monaco-editor';
 import client from '../config/client';
 import CrdtService from './crdt-service';
 import ChangesWorker from 'worker-loader!./workers/Changes.worker';
-import OperationsWorker from 'worker-loader!./workers/Operations.worker';
 
 function editorController(editorRef) {
   const editor = monaco.editor.create(editorRef.current, {
@@ -14,7 +13,6 @@ function editorController(editorRef) {
   const model = editor.getModel();
   const storage = new CrdtService(Date.now().toString());
   const changesWorker = new ChangesWorker();
-  const operationsWorker = new OperationsWorker();
   let preventEmit = false;
 
   editor.onDidChangeModelContent(event => {
@@ -28,25 +26,35 @@ function editorController(editorRef) {
   };
 
   client.on('server:executeOperation', raw => {
-    const op = storage.executeOperation(raw);
-    const content = storage.getValue();
-    //console.log(op);
-    operationsWorker.postMessage({ char: op.char, index: op.index, content });
-  });
-
-  operationsWorker.onmessage = ({ data }) => {
-    const { char, startLineNumber, startColumn, endLineNumber, endColumn } = data;
-
+    const { char, index } = storage.executeOperation(raw.op);
+    const { lineNumber, column } = model.getPositionAt(index);
+    let range;
+    switch (raw.type) {
+      case 1:
+        console.log('INSERT');
+        range = new monaco.Range(lineNumber, column, lineNumber, column);
+        break;
+      case 0:
+        console.log('REMOVE COLUMN');
+        range = new monaco.Range(lineNumber, column, lineNumber, column + 1);
+        break;
+      case -1:
+        console.log('REMOVE LINE');
+        range = new monaco.Range(lineNumber, column, lineNumber + 1, column);
+        break;
+      default:
+        console.log('ERROR');
+    }
+    console.log(range);
     preventEmit = true;
     model.applyEdits([{
       forceMoveMarkers: true,
-      range: new monaco.Range(startLineNumber, startColumn, endLineNumber, endColumn),
+      range,
       text: char
     }]);
     preventEmit = false;
-    
     editor.focus();
-  };
+  });
 
   client.on('server:sendFileContent', data => {
     try {
