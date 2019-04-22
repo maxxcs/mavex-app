@@ -47,11 +47,24 @@ module.exports = {
           },
           'css-loader'
         ]
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        exclude: '/node_modules/',
+        use: [
+          {
+            loader: 'file-loader'
+          }
+        ]
       }
     ]
   },
   devServer: {
     port: 9000,
-    contentBase: './public'
+    contentBase: './public',
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+    },
   }
 };

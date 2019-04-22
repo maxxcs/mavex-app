@@ -1,7 +1,7 @@
 import * as monaco from 'monaco-editor';
 import client from '../config/client';
 import CrdtService from './crdt-service';
-import ChangesWorker from 'worker-loader!./workers/Changes.worker';
+import ChangesWorker from 'worker-loader!./workers/changes.worker';
 
 function editorController(editorRef) {
   const editor = monaco.editor.create(editorRef.current, {
@@ -15,9 +15,11 @@ function editorController(editorRef) {
   const changesWorker = new ChangesWorker();
   let preventEmit = false;
 
-  editor.onDidChangeModelContent(event => {
+  model.onDidChangeContent(event => {
     if (preventEmit) return;
-    changesWorker.postMessage(event.changes);
+    //console.log(event);
+    const changes = event.changes;
+    changesWorker.postMessage(changes);
   });
 
   changesWorker.onmessage = ({ data }) => {
@@ -31,15 +33,15 @@ function editorController(editorRef) {
     let range;
     switch (raw.type) {
       case 1:
-        console.log('INSERT');
+        console.log('INSERT', index);
         range = new monaco.Range(lineNumber, column, lineNumber, column);
         break;
       case 0:
-        console.log('REMOVE COLUMN');
+        console.log('REMOVE COLUMN', index);
         range = new monaco.Range(lineNumber, column, lineNumber, column + 1);
         break;
       case -1:
-        console.log('REMOVE LINE');
+        console.log('REMOVE LINE', index);
         range = new monaco.Range(lineNumber, column, lineNumber + 1, column);
         break;
       default:
@@ -59,7 +61,7 @@ function editorController(editorRef) {
   client.on('server:sendFileContent', data => {
     try {
       preventEmit = true;
-      editor.setValue(data);
+      model.setValue(data);
     } finally {
       preventEmit = false;
       editor.focus();
