@@ -4,7 +4,7 @@ import { Ident } from './crdt/idents/Ident';
 export default class CrdtService {
   constructor(uniqueId, content, generator) {
     this.crdt = new KSeq(uniqueId, content, generator);  
-    window.crdt = this.crdt;
+    //window.crdt = this.crdt;
   }
   
   executeChange(change) {

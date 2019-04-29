@@ -49,6 +49,19 @@ module.exports = {
         ]
       },
       {
+        test: /\.less$/,
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader'
+        }, {
+          loader: 'less-loader',
+          options: {
+            javascriptEnabled: true
+          }
+        }]
+      },
+      {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         exclude: '/node_modules/',
         use: [
@@ -66,5 +79,6 @@ module.exports = {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
     },
+    historyApiFallback: true
   }
 };

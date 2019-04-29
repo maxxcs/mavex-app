@@ -8,7 +8,8 @@ function editorController(editorRef) {
     value: '',
     language: 'javascript',
     theme: 'vs-dark',
-    renderFinalNewline: true
+    renderFinalNewline: true,
+    //automaticLayout: true
   });
   const model = editor.getModel();
   const storage = new CrdtService(Date.now().toString());
@@ -24,7 +25,7 @@ function editorController(editorRef) {
 
   changesWorker.onmessage = ({ data }) => {
     const op = storage.executeChange(data);
-    client.emit('editor:contentChanged', op);
+    client.emit('editor:broadcastOperation', op);
   };
 
   client.on('server:executeOperation', raw => {
@@ -66,6 +67,13 @@ function editorController(editorRef) {
       preventEmit = false;
       editor.focus();
     }
+  });
+
+  editor.onDidDispose(() => {
+    model.dispose();
+    changesWorker.terminate();
+    client.removeListener('server:executeOperation');
+    client.removeListener('server:sendFileContent');
   });
 
   if (!model.isDisposed()) {

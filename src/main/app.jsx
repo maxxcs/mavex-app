@@ -1,19 +1,20 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 import store from '../config/store';
-import client from '../config/client';
+import '../config/client';
+import './main.less';
 
-import 'modules/rsuite/dist/styles/rsuite.min.css';
-import './main.css';
-
-import Editor from '../workspace/editor';
+import Grid from './grid';
 
 const App = () => {
   return (
     <Provider store={store}>
       <>
-        <Editor />
+        <BrowserRouter>
+          <Grid />
+        </BrowserRouter>
       </>
     </Provider>
   );
