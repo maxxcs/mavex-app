@@ -11,11 +11,9 @@ import Grid from './grid';
 const App = () => {
   return (
     <Provider store={store}>
-      <>
-        <BrowserRouter>
-          <Grid />
-        </BrowserRouter>
-      </>
+      <BrowserRouter>
+        <Grid />
+      </BrowserRouter>
     </Provider>
   );
 };

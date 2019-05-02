@@ -1,5 +1,54 @@
 @import '~rsuite/styles/less/index.less';
+
 @icon-font-path: './fonts';
+@border-radius-base: 2px;
+
+@base-color: #4a8ac0;
+@text-color: #CCC;
+@tooltip-bg: #333;
+
+@info-color: #87b3d3;
+@info-light-color: #4a6b88;
+@success-color:  #7e926d;
+@success-light-color: #48533e;
+@warning-color: #d3bc71;
+@warning-light-color: #836a2e;
+@error-color: #ce6b6b;
+@error-light-color: #852821;
+
+@input-bg: #3A3A3A;
+@input-color: #CCC;
+@input-border: #333;
+
+@input-group-addon-bg: #333;
+
+@nav-item-default-hover-bg: inherit;
+@nav-item-hover-font-color: #EEE;
+@nav-item-click-bg: inherit;
+@nav-item-click-font-color: #EEE;
+
+@btn-subtle-hover-color: #EEE;
+@btn-subtle-default-hover-color: #EEE;
+@btn-subtle-hover-bg: inherit;
+@btn-subtle-active-default-color: #EEE;
+@btn-subtle-active-default-bg: inherit;
+
+@dropdown-bg: #2A2A2A;
+@dropdown-divider-bg: #333;
+@dropdown-link-color: #B1B1B1;
+@dropdown-link-hover-color: #EEE;
+@dropdown-link-hover-bg: #222;
+
+@modal-body-margin: 10px;
+@modal-title-color: #B1B1B1;
+@modal-content-bg: #2A2A2A;
+@modal-header-border-color: #e5e5e5;
+@modal-close-btn-color: #B1B1B1;
+
+@drawer-content-bg: #2A2A2A;
+@drawer-title-color: #B1B1B1;
+@drawer-close-btn-color: #B1B1B1;
+@drawer-horizontal-xs: 455px;
 
 html {
   min-height: 100%;
@@ -9,8 +58,15 @@ html {
 body {
   height:100%;
   background-color: #202020;
-  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
+}
+
+h1 {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 #app {

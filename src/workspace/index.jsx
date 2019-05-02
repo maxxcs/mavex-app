@@ -6,20 +6,16 @@ import FileTabs from './file-tabs';
 
 const Workspace = () => {
   return (
-    <div style={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'row' }}>
-      <div style={{ height: '100%', width: 280, backgroundColor: '#252525' }}>
+    <>
+      <div style={{ display: 'flex', flexDirection: 'row', height: '100%', width: '100%' }}>
         <FileTree />
-      </div>
-      <div style={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ height: 35, width: '100%', backgroundColor: '#202020' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
           <FileTabs />
-        </div> 
-        <div style={{ height: '100%', width: '100%' }}>
           <Editor />
         </div>
       </div>
-    </div>
+    </>
   );  
-}
+};
 
 export default Workspace;

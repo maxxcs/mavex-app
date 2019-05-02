@@ -20,6 +20,6 @@ const Editor = () => {
   return (
       <div ref={editorRef} style={{ height: '100%', width: '100%' }} />
   );
-}
+};
 
 export default Editor;
