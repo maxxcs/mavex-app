@@ -19,7 +19,7 @@ const CreateTerminalForm = ({ display, displayTerminalForm }) => {
           <InputGroup.Addon>
             <Icon icon="terminal" />
           </InputGroup.Addon>
-          <Input placeholder="Terminal name" type="text" focus />
+          <Input placeholder="Terminal name" type="text" autofocus="true" />
         </InputGroup>
       </Modal.Body>
       <Modal.Footer style={{ marginTop: 10 }}>
