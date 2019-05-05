@@ -14,5 +14,3 @@ const HeaderCointainer = () => {
 };
 
 export default HeaderCointainer;
-
-//<span>Fulano<Icon icon="user-circle" style={{ marginLeft: 4 }} /></span>

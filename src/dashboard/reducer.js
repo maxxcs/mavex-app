@@ -1,17 +1,5 @@
 const INITIAL_STATE = { 
-  displayProjectForm: false,
-  projectForm: {
-    name: '',
-    isListed: false,
-    isPrivate: false,
-    password: null,
-    privilegeSchema: {
-      general: 1,
-      files: 1,
-      channels: 1,
-
-    }
-  }
+  displayProjectForm: false
 };
 
 export default (state = INITIAL_STATE, action) => {

@@ -17,9 +17,9 @@ const CreateTerminalForm = ({ display, displayTerminalForm }) => {
       <Modal.Body>
         <InputGroup>
           <InputGroup.Addon>
-            <Icon icon="terminal" />
+            <Icon icon="terminal" style={{ color: '#888' }} />
           </InputGroup.Addon>
-          <Input placeholder="Terminal name" type="text" autofocus="true" />
+          <Input placeholder="Terminal name" type="text" autoFocus={true} />
         </InputGroup>
       </Modal.Body>
       <Modal.Footer style={{ marginTop: 10 }}>
