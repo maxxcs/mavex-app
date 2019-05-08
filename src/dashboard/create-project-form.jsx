@@ -36,7 +36,7 @@ const CreateProjectForm = ({ display, displayProjectForm }) => {
               <InputGroup.Addon>
                 <Icon icon="folder" style={{ color: '#888' }} />
               </InputGroup.Addon>
-              <Input type="text" autoFocus={true} />
+              <Input type="text" autoFocus={true} onPressEnter={() => displayProjectForm(false)} />
             </InputGroup>
             <Whisper placement="topLeft" trigger="hover" speaker={<Tooltip>Required</Tooltip>}>
               <Icon icon="help-o" style={{ color: '#666' }} />
