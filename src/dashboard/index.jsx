@@ -7,11 +7,11 @@ import CreateProjectForm from './create-project-form';
 const Dashboard = () => {
   return (
     <>
-      <div style={{  display: 'flex', flexDirection: 'row', height: '100%', width: '100%' }}>
+      <div className="flex-row full">
         <ProjectList />
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', alignItems: 'center', justifyContent: 'center' }}>
-            <Icon icon="cube" size="5x" style={{ color: '#2A2A2A', fontSize: 200, marginBottom: 250 }} />
+        <div className="flex-column full center">
+          <div>
+            <Icon icon="cube" style={{ color: '#2A2A2A', fontSize: 200, marginBottom: 60 }} />
           </div>
         </div>
       </div>

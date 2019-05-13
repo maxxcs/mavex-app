@@ -8,9 +8,6 @@ const Editor = () => {
   useEffect(() => {
     if (editorRef.current) {
       editor = editorController(editorRef);
-      editorRef.current.addEventListener('onresize', () => {
-        console.log('resize');
-      });
     }
     return () => {
       editor.dispose();
@@ -18,7 +15,7 @@ const Editor = () => {
   }, []);
 
   return (
-      <div ref={editorRef} style={{ height: '100%', width: '100%' }} />
+      <div ref={editorRef} className="flex-column full" />
   );
 };
 

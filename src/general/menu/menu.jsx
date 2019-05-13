@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Sidenav, Nav, Icon } from 'rsuite';
+import { inherits } from 'util';
 
 const Menu = ({ history, location }) => {
   const [selected, setSelected] = useState(null);
@@ -15,7 +16,7 @@ const Menu = ({ history, location }) => {
 
   return (
     <Sidenav expanded={false} activeKey={selected} style={{ height: '100%', backgroundColor: '#303030' }}>
-      <Sidenav.Body style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+      <Sidenav.Body className="flex-column" style={{ justifyContent: 'space-between', height: '100%' }}>
         <Nav>
           <Nav.Item eventKey="/dashboard" icon={<Icon icon="dashboard" />} onClick={() => handleRoute('/dashboard')}>
             Dashboard

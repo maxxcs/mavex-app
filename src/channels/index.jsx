@@ -5,10 +5,10 @@ import ChannelList from './channel-list';
 const Channels = () => {
   return (
     <>
-      <div style={{  display: 'flex', flexDirection: 'row', height: '100%', width: '100%' }}>
+      <div className="flex-row full">
         <ChannelList />
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
-          <div style={{ height: '100%', width: '100%' }}>
+        <div className="flex-column full">
+          <div className="full">
             
           </div>
         </div>

@@ -17,17 +17,17 @@ const Grid = () => {
   );
 
   return (
-    <Container style={{ height: '100%', width: '100%' }}>
-      <Header style={{ zIndex: 1 }}>
+    <Container className="full">
+      <Header style={{ zIndex: 10 }}>
         <HeaderCointainer />
       </Header>
-      <Container style={{ height: '100%', width: '100%' }}>
+      <Container className="full">
         { renderSidebar() }
-        <Content style={{ height: '100%', width: '100%' }}>
+        <Content className="full">
           <Sections />
         </Content>
       </Container>
-      <Footer style={{ zIndex: 1 }}>
+      <Footer style={{ zIndex: 10 }}>
         <FooterCointainer />
       </Footer>
     </Container>

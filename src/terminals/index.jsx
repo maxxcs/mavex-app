@@ -6,10 +6,10 @@ import CreateTerminalForm from './create-terminal-form';
 const Terminals = () => {
   return (
     <>
-      <div style={{  display: 'flex', flexDirection: 'row', height: '100%', width: '100%' }}>
+      <div className="flex-row full">
         <TerminalList />
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
-          <div style={{ height: '100%', width: '100%' }}>
+        <div className="flex-column full">
+          <div>
             
           </div>
         </div>

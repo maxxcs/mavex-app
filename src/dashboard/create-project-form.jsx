@@ -27,11 +27,11 @@ const CreateProjectForm = ({ display, displayProjectForm }) => {
         <Drawer.Title><strong>New Project</strong></Drawer.Title>
       </Drawer.Header>
       <Drawer.Body>
-      <div style={{  display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
+      <div className="flex-column full">
 
         <div style={{ width: '100%', marginBottom: 15 }}>
           <div style={{ marginBottom: 5 }}>Project Name</div>
-          <div style={{  display: 'flex', flexDirection: 'row', width: '100%', alignItems: 'center' }}>
+          <div className="flex-row" style={{ width: '100%', alignItems: 'center' }}>
             <InputGroup style={{ width: 300, marginRight: 10 }}>
               <InputGroup.Addon>
                 <Icon icon="folder" style={{ color: '#888' }} />
@@ -46,7 +46,7 @@ const CreateProjectForm = ({ display, displayProjectForm }) => {
 
         <div style={{ width: '100%' }}>
           <div style={{ marginBottom: 5 }}>Password</div>
-          <div style={{  display: 'flex', flexDirection: 'row', width: '100%', alignItems: 'center' }}>
+          <div className="flex-row" style={{ width: '100%', alignItems: 'center' }}>
             <InputGroup style={{ width: 300, marginRight: 10 }}>
               <InputGroup.Addon>
                 <Icon icon="key" style={{ color: '#888' }} />
@@ -59,7 +59,7 @@ const CreateProjectForm = ({ display, displayProjectForm }) => {
           </div>
         </div>
 
-        <div style={{  display: 'flex', flexDirection: 'row', width: 230, minHeight: 50, alignItems: 'center' }}>
+        <div className="flex-row" style={{ width: 230, minHeight: 50, alignItems: 'center' }}>
           <Checkbox value={'public'}>Public</Checkbox>
           <Whisper placement="topLeft" trigger="hover" speaker={<Tooltip>Required</Tooltip>}>
             <Icon icon="help-o" style={{ color: '#666', marginLeft: 5 }} />
@@ -74,7 +74,7 @@ const CreateProjectForm = ({ display, displayProjectForm }) => {
         </Divider>
 
         <div style={{ width: '100%' }}>
-          <div style={{  display: 'flex', flexDirection: 'row', width: '100%', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div className="flex-row" style={{ width: '100%', alignItems: 'center', justifyContent: 'space-between' }}>
               <Whisper placement="topLeft" trigger="hover" speaker={<Tooltip>Required</Tooltip>} delayShow={300}>
                 <Toggle size="lg" checkedChildren="Read" unCheckedChildren="Read" defaultChecked />
               </Whisper>
@@ -95,7 +95,7 @@ const CreateProjectForm = ({ display, displayProjectForm }) => {
         </Divider>
 
         <div style={{ width: '100%' }}>
-          <div style={{  display: 'flex', flexDirection: 'row', width: '100%', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div className="flex-row" style={{ width: '100%', alignItems: 'center', justifyContent: 'space-between' }}>
               <Whisper placement="topLeft" trigger="hover" speaker={<Tooltip>Required</Tooltip>} delayShow={300}>
                 <Toggle size="lg" checkedChildren="Read" unCheckedChildren="Read" defaultChecked />
               </Whisper>
@@ -116,7 +116,7 @@ const CreateProjectForm = ({ display, displayProjectForm }) => {
         </Divider>
 
         <div style={{ width: '100%' }}>
-          <div style={{  display: 'flex', flexDirection: 'row', width: '100%', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div className="flex-row" style={{ width: '100%', alignItems: 'center', justifyContent: 'space-between' }}>
               <Whisper placement="topLeft" trigger="hover" speaker={<Tooltip>Required</Tooltip>} delayShow={300}>
                 <Toggle size="lg" checkedChildren="Read" unCheckedChildren="Read" defaultChecked />
               </Whisper>

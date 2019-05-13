@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
-  user: {}
+  user: {},
+  project: {}
 };
 
 export default (state = INITIAL_STATE, action) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { isAuthenticated } from '../config/auth';
 
@@ -10,11 +10,22 @@ const Home = ({ history }) => {
     history.push('/dashboard');
     return null;
   } 
+  const [display, setDisplay] = useState('LOGIN');
+  const displayContent = () => {
+    switch (display) {
+      case 'LOGIN':
+        return (<Login changeDisplay={setDisplay} />);
+      case 'REGISTER':
+        return (<Register changeDisplay={setDisplay} />);
+      default:
+        return null;
+    }
+  };
 
   return (
     <>
-      <div style={{  display: 'flex', flexDirection: 'row', height: '100%', width: '100%', alignItems: 'center', justifyContent: 'center' }}>
-        <Login />
+      <div className="flex-row full center">
+        {displayContent()}
       </div>
     </>
   );  

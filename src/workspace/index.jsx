@@ -7,9 +7,9 @@ import FileTabs from './file-tabs';
 const Workspace = () => {
   return (
     <>
-      <div style={{ display: 'flex', flexDirection: 'row', height: '100%', width: '100%' }}>
+      <div className="flex-row full">
         <FileTree />
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
+        <div className="flex-column full">
           <FileTabs />
           <Editor />
         </div>
