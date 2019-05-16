@@ -47,8 +47,8 @@ const Register = ({ changeDisplay }) => {
           </InputGroup>
         </div>
       </div>
-      <div style={{ alignSelf: 'flex-start', width: 250, marginLeft: 30, marginBottom: 10 }}>
-        <span style={{ fontSize: 10, color: '#666' }}>
+      <div style={{ width: 300, marginBottom: 10 }}>
+        <span style={{ fontSize: 10, color: '#AAA' }}>
           By registering, you agree to Mavex's <a style={{ cursor: 'pointer' }}>Terms of Service</a> and <a style={{ cursor: 'pointer' }}>Privacy Policy</a>.
         </span>
       </div>

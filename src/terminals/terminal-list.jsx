@@ -6,7 +6,7 @@ import { Button, Alert, Divider } from 'rsuite';
 
 const TerminalList = ({ displayTerminalForm }) => {
   return (
-    <div className="flex-column full" style={{ width: 500, backgroundColor: '#252525', padding: 10 }}>
+    <div className="flex-column full" style={{ width: 500, minWidth: 300, backgroundColor: '#252525', padding: 10, zIndex: 5 }}>
       <Button appearance='default' block style={{ backgroundColor: '#333344', color: '#CCC' }} onClick={() => displayTerminalForm(true)}>New Terminal</Button>
       <Divider style={{ backgroundColor: '#333', margin: '10px 0px'}} />
     </div>

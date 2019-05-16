@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Sidenav, Nav, Icon } from 'rsuite';
-import { inherits } from 'util';
 
 const Menu = ({ history, location }) => {
   const [selected, setSelected] = useState(null);

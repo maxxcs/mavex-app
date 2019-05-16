@@ -4,7 +4,7 @@ import { Icon } from 'rsuite';
 const FooterCointainer = () => {
   return (
     <div className="flex-row full center" style={styles.container}>
-      <span>Alpha version<Icon icon="realtime" style={{ marginLeft: 3 }} /></span>
+      <span><Icon icon="bug" style={{ marginLeft: 3 }} /> Alpha version</span>
     </div>
   );
 };

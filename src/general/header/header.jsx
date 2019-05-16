@@ -3,26 +3,26 @@ import { withRouter } from 'react-router-dom';
 import { Icon } from 'rsuite';
 import { isAuthenticated } from '../../config/auth';
 
-import User from './user';
+import UserMenu from './user-menu';
+import ProjectMenu from './project-menu';
 
 const HeaderCointainer = ({ history }) => {
-  const renderProjectRef = () => (
+  const renderProjectMenu = () => (
     isAuthenticated() ? (
-    <span style={{ color: '#818181' }}>Project Name</span>
+      <ProjectMenu projectName="engine-awesome" />
     ) : null
   );
-
-  const renderUserRef = () => (
+  const renderUserMenu = () => (
     isAuthenticated() ? (
-      <User username="Fulano" />
+      <UserMenu username="Fulano" />
     ) : null
   );
 
   return (
     <div className="flex-row full center" style={styles.container}>
       <div style={styles.brand} onClick={() => history.push('/')}><Icon icon="cube" style={{ marginRight: 3 }} /><h1>Mavex</h1></div>
-      <div>{renderProjectRef()}</div>
-      <div>{renderUserRef()}</div>
+      <div>{renderProjectMenu()}</div>
+      <div>{renderUserMenu()}</div>
     </div>
   );
 };

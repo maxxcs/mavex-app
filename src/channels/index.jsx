@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Chat from './chat';
 import ChannelList from './channel-list';
 
 const Channels = () => {
@@ -7,10 +8,8 @@ const Channels = () => {
     <>
       <div className="flex-row full">
         <ChannelList />
-        <div className="flex-column full">
-          <div className="full">
-            
-          </div>
+        <div className="flex-column center full">
+          <Chat />
         </div>
       </div>
     </>

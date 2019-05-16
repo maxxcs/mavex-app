@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dropdown, Icon } from 'rsuite';
 
-const User = ({ username }) => {
+const UserMenu = ({ username }) => {
   return (
     <Dropdown title={username} placement="bottomRight" icon={<Icon icon="user" />}>
       <Dropdown.Item panel style={{ padding: 10, width: 160 }}>
@@ -18,4 +18,4 @@ const User = ({ username }) => {
   );
 };
 
-export default User;
+export default UserMenu;
