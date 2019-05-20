@@ -37,6 +37,7 @@ const styles = {
     borderBottom: '5px solid #303030'
   },
   brand: {
+    minWidth: 60,
     cursor: 'pointer', 
     WebkitUserSelect: 'none', 
     MozUserSelect: 'none', 

@@ -2,8 +2,8 @@ import React from 'react';
 
 const ChannelList = () => {
   return (
-    <div className="flex-column full" style={{ width: 300, backgroundColor: '#252525', zIndex: 5 }}>
-      <span style={{ color: '#919191' }}>ChannelList</span>
+    <div id="channel-list" className="flex-column full">
+
     </div>
   );
 };

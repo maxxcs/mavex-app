@@ -15,7 +15,9 @@ const Editor = () => {
   }, []);
 
   return (
-      <div ref={editorRef} className="flex-column full" />
+    <div className="scrollable-parent full">
+      <div ref={editorRef} className="scrollable-child full" />
+    </div>
   );
 };
 

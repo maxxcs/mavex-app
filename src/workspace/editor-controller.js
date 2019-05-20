@@ -9,7 +9,7 @@ function editorController(editorRef) {
     language: 'javascript',
     theme: 'vs-dark',
     renderFinalNewline: true,
-    //automaticLayout: true
+    automaticLayout: true
   });
   const model = editor.getModel();
   const storage = new CrdtService(Date.now().toString());

@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputGroup, Input, Checkbox, Button } from 'rsuite';
+import { InputGroup, Input, Button } from 'rsuite';
 
 const Register = ({ changeDisplay }) => {
   return (
@@ -49,7 +49,7 @@ const Register = ({ changeDisplay }) => {
       </div>
       <div style={{ width: 300, marginBottom: 10 }}>
         <span style={{ fontSize: 10, color: '#AAA' }}>
-          By registering, you agree to Mavex's <a style={{ cursor: 'pointer' }}>Terms of Service</a> and <a style={{ cursor: 'pointer' }}>Privacy Policy</a>.
+          By registering, you agree to Mavex's <a className="link">Terms of Service</a> and <a className="link">Privacy Policy</a>.
         </span>
       </div>
       <div className="flex-column" style={{ width: 300, marginBottom: 20 }}>
@@ -57,7 +57,7 @@ const Register = ({ changeDisplay }) => {
       </div>
       <div>
         <span>
-          <a style={{ cursor: 'pointer' }} onClick={() => changeDisplay('LOGIN')}>Already have an account?</a>
+          <a className="link" onClick={() => changeDisplay('LOGIN')}>Already have an account?</a>
         </span>
       </div>
     </div>
