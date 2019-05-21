@@ -5,16 +5,16 @@ const TerminalScreen = () => {
   const inputRef = useRef();
   const terminalContentRef = useRef();
   const [command, setCommand] = useState('');
-  
-  const handleInput = evt => {
-    if (evt.keyCode === 13 && command !== '') { 
+
+  const handleInput = (evt) => {
+    if (evt.keyCode === 13 && command !== '') {
       console.log(command);
       setCommand('');
       return false;
     }
   };
 
-  const handleClickContainer = evt => {
+  const handleClickContainer = (evt) => {
     if (inputRef.current && evt.target === terminalContentRef.current) {
       inputRef.current.focus();
     }
@@ -35,25 +35,26 @@ const TerminalScreen = () => {
           <a>
             <Icon icon="toggle-down" style={{ marginRight: 10, color: '#919191' }} />
           </a>
-        </div> 
+        </div>
       </div>
       <div id="terminal-stack" ref={terminalContentRef} className="full">
-        <div  className="scrollable-parent">
-          <div className="scrollable-child">
-
-          </div>
+        <div className="scrollable-parent">
+          <div className="scrollable-child" />
         </div>
         <div id="terminal-controller" className="flex-row">
-          <span style={{ marginRight: 10, minWidth: 'inherit' }}><strong>Fulano@home ~ $</strong></span>
-          <input 
+          <span style={{ marginRight: 10, minWidth: 'inherit' }}>
+            <strong>Fulano@home ~ $</strong>
+          </span>
+          <input
             id="terminal-input"
-            ref={inputRef} 
-            type="text" 
-            autoFocus={true} 
-            spellCheck={false} 
-            value={command} 
-            onChange={evt => setCommand(evt.target.value)} 
-            onKeyDown={handleInput} 
+            ref={inputRef}
+            type="text"
+            autoFocus
+            autoComplete="off"
+            spellCheck={false}
+            value={command}
+            onChange={evt => setCommand(evt.target.value)}
+            onKeyDown={handleInput}
           />
         </div>
       </div>

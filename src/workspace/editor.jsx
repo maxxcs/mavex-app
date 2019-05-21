@@ -4,7 +4,7 @@ import editorController from './editor-controller';
 const Editor = () => {
   const editorRef = useRef();
   let editor = null;
-  
+
   useEffect(() => {
     if (editorRef.current) {
       editor = editorController(editorRef);

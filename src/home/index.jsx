@@ -9,14 +9,14 @@ const Home = ({ history }) => {
   if (isAuthenticated()) {
     history.push('/dashboard');
     return null;
-  } 
+  }
   const [display, setDisplay] = useState('LOGIN');
   const displayContent = () => {
     switch (display) {
       case 'LOGIN':
-        return (<Login changeDisplay={setDisplay} />);
+        return <Login changeDisplay={setDisplay} />;
       case 'REGISTER':
-        return (<Register changeDisplay={setDisplay} />);
+        return <Register changeDisplay={setDisplay} />;
       default:
         return null;
     }
@@ -24,11 +24,9 @@ const Home = ({ history }) => {
 
   return (
     <>
-      <div className="flex-row full center">
-        {displayContent()}
-      </div>
+      <div className="flex-row full center">{displayContent()}</div>
     </>
-  );  
+  );
 };
 
 export default withRouter(Home);

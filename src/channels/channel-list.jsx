@@ -1,11 +1,5 @@
 import React from 'react';
 
-const ChannelList = () => {
-  return (
-    <div id="channel-list" className="flex-column full">
-
-    </div>
-  );
-};
+const ChannelList = () => <div id="channel-list" className="flex-column full" />;
 
 export default ChannelList;

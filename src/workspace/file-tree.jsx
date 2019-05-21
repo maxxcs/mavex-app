@@ -1,11 +1,5 @@
 import React from 'react';
 
-const FileTree = () => {
-  return (
-    <div id="file-tree" className="flex-column full">
-
-    </div>
-  );
-};
+const FileTree = () => <div id="file-tree" className="flex-column full" />;
 
 export default FileTree;

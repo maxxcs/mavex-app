@@ -11,7 +11,7 @@ const reducers = combineReducers({
   dashboard,
   workspace,
   channels,
-  terminals
+  terminals,
 });
 
 export default reducers;

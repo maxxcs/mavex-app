@@ -1,5 +1,5 @@
-const INITIAL_STATE = { 
-  displayProjectForm: false
+const INITIAL_STATE = {
+  displayProjectForm: false,
 };
 
 export default (state = INITIAL_STATE, action) => {

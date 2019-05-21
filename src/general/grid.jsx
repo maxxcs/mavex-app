@@ -1,5 +1,7 @@
 import React from 'react';
-import { Container, Header, Content, Footer, Sidebar } from 'rsuite';
+import {
+  Container, Header, Content, Footer, Sidebar,
+} from 'rsuite';
 import { isAuthenticated } from '../config/auth';
 
 import HeaderCointainer from './header/header';
@@ -8,13 +10,11 @@ import Menu from './menu/menu';
 import Sections from './routes/sections';
 
 const Grid = () => {
-  const renderSidebar = () => (
-    isAuthenticated() ? (
-      <Sidebar width={56}>
-        <Menu />
-      </Sidebar>
-    ) : null
-  );
+  const renderSidebar = () => (isAuthenticated() ? (
+    <Sidebar width={56}>
+      <Menu />
+    </Sidebar>
+  ) : null);
 
   return (
     <Container className="full">
@@ -22,7 +22,7 @@ const Grid = () => {
         <HeaderCointainer />
       </Header>
       <Container className="full">
-        { renderSidebar() }
+        {renderSidebar()}
         <Content className="full">
           <Sections />
         </Content>

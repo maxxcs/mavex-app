@@ -6,20 +6,17 @@ module.exports = {
   mode: 'development',
   entry: './src/index.jsx',
   output: {
-    path: __dirname + '/public',
+    path: `${__dirname}/public`,
     filename: './app.js',
-    globalObject: 'this'
+    globalObject: 'this',
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
     alias: {
-      modules: __dirname + '/node_modules'
-    }
+      modules: `${__dirname}/node_modules`,
+    },
   },
-  plugins: [
-    new MiniCssExtractPlugin({ filename: 'style.css' }),
-    new MonacoWebpackPlugin()
-  ],
+  plugins: [new MiniCssExtractPlugin({ filename: 'style.css' }), new MonacoWebpackPlugin()],
   module: {
     rules: [
       {
@@ -30,10 +27,10 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env', '@babel/preset-react'],
-              plugins: ['syntax-dynamic-import']
-            }
-          }
-        ]
+              plugins: ['syntax-dynamic-import'],
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
@@ -42,35 +39,39 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: './public'
-            }
+              publicPath: './public',
+            },
           },
-          'css-loader'
-        ]
+          'css-loader',
+        ],
       },
       {
         test: /\.less$/,
-        use: [{
-          loader: 'style-loader'
-        }, {
-          loader: 'css-loader'
-        }, {
-          loader: 'less-loader',
-          options: {
-            javascriptEnabled: true
-          }
-        }]
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              javascriptEnabled: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         exclude: '/node_modules/',
         use: [
           {
-            loader: 'file-loader'
-          }
-        ]
-      }
-    ]
+            loader: 'file-loader',
+          },
+        ],
+      },
+    ],
   },
   devServer: {
     port: 9000,
@@ -79,6 +80,6 @@ module.exports = {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
     },
-    historyApiFallback: true
-  }
+    historyApiFallback: true,
+  },
 };

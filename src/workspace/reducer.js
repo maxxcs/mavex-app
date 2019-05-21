@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  editor: {}
+  editor: {},
 };
 
 export default (state = INITIAL_STATE, action) => {

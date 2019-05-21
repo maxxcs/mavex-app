@@ -1,8 +1,12 @@
 import React from 'react';
-import { Icon, Whisper, Tooltip, Alert } from 'rsuite';
+import {
+  Icon, Whisper, Tooltip, Alert,
+} from 'rsuite';
 
-const TerminalInstance = ({ id, actual, name, msg, color }) => {
-  const isActual = () => (id === actual) ? '#4179a8': '#CCC';
+const TerminalInstance = ({
+  id, actual, name, msg, color,
+}) => {
+  const isActual = () => (id === actual ? '#4179a8' : '#CCC');
 
   return (
     <div className="flex-column terminal-instance instance-item">
@@ -15,20 +19,39 @@ const TerminalInstance = ({ id, actual, name, msg, color }) => {
         </div>
         <div className="flex-row terminal-instance-menu">
           <Whisper delay={250} placement="top" trigger="hover" speaker={<Tooltip>Resync</Tooltip>}>
-            <a className="highlight" onClick={() => Alert.success('So much synchronization, very updated!')}>
+            <a
+              className="highlight"
+              onClick={() => Alert.success('So much synchronization, very updated!')}
+            >
               <Icon icon="refresh" style={{ fontSize: 18 }} />
             </a>
-          </Whisper> 
-          <Whisper delay={250} placement="topLeft" trigger="hover" speaker={<Tooltip>Settings</Tooltip>}>
-          <a className="highlight" onClick={() => Alert.warning('So much configuration, very options!')}>
-            <Icon icon="sliders" style={{ fontSize: 18 }} />
-          </a>
-          </Whisper> 
-          <Whisper delay={250} placement="topLeft" trigger="hover" speaker={<Tooltip>Delete</Tooltip>}>
-            <a className="highlight" onClick={() => Alert.error('So much deletion, very erasable!')}>
+          </Whisper>
+          <Whisper
+            delay={250}
+            placement="topLeft"
+            trigger="hover"
+            speaker={<Tooltip>Settings</Tooltip>}
+          >
+            <a
+              className="highlight"
+              onClick={() => Alert.warning('So much configuration, very options!')}
+            >
+              <Icon icon="sliders" style={{ fontSize: 18 }} />
+            </a>
+          </Whisper>
+          <Whisper
+            delay={250}
+            placement="topLeft"
+            trigger="hover"
+            speaker={<Tooltip>Delete</Tooltip>}
+          >
+            <a
+              className="highlight"
+              onClick={() => Alert.error('So much deletion, very erasable!')}
+            >
               <Icon icon="trash2" style={{ fontSize: 18 }} />
-            </a>          
-          </Whisper>    
+            </a>
+          </Whisper>
         </div>
       </div>
       <div className="flex-row center full center-alt">
@@ -37,7 +60,7 @@ const TerminalInstance = ({ id, actual, name, msg, color }) => {
           <span>{msg}</span>
         </div>
       </div>
-    </div> 
+    </div>
   );
 };
 

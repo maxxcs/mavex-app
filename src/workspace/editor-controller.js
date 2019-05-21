@@ -1,7 +1,7 @@
 import * as monaco from 'monaco-editor';
+import ChangesWorker from 'worker-loader!./workers/changes.worker';
 import client from '../config/client';
 import CrdtService from './crdt-service';
-import ChangesWorker from 'worker-loader!./workers/changes.worker';
 
 function editorController(editorRef) {
   const editor = monaco.editor.create(editorRef.current, {
@@ -9,17 +9,17 @@ function editorController(editorRef) {
     language: 'javascript',
     theme: 'vs-dark',
     renderFinalNewline: true,
-    automaticLayout: true
+    automaticLayout: true,
   });
   const model = editor.getModel();
   const storage = new CrdtService(Date.now().toString());
   const changesWorker = new ChangesWorker();
   let preventEmit = false;
 
-  model.onDidChangeContent(event => {
+  model.onDidChangeContent((event) => {
     if (preventEmit) return;
-    //console.log(event);
-    const changes = event.changes;
+    // console.log(event);
+    const { changes } = event;
     changesWorker.postMessage(changes);
   });
 
@@ -28,7 +28,7 @@ function editorController(editorRef) {
     client.emit('editor:broadcastOperation', op);
   };
 
-  client.on('server:executeOperation', raw => {
+  client.on('server:executeOperation', (raw) => {
     const { char, index } = storage.executeOperation(raw.op);
     const { lineNumber, column } = model.getPositionAt(index);
     let range;
@@ -50,16 +50,18 @@ function editorController(editorRef) {
     }
     console.log(range);
     preventEmit = true;
-    model.applyEdits([{
-      forceMoveMarkers: true,
-      range,
-      text: char
-    }]);
+    model.applyEdits([
+      {
+        forceMoveMarkers: true,
+        range,
+        text: char,
+      },
+    ]);
     preventEmit = false;
     editor.focus();
   });
 
-  client.on('server:sendFileContent', data => {
+  client.on('server:sendFileContent', (data) => {
     try {
       preventEmit = true;
       model.setValue(data);
@@ -77,7 +79,7 @@ function editorController(editorRef) {
   });
 
   if (!model.isDisposed()) {
-    //client.emit('editor:requestSync', {});
+    // client.emit('editor:requestSync', {});
     editor.focus();
   }
 

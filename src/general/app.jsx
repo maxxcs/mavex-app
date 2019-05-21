@@ -8,14 +8,12 @@ import './main.less';
 
 import Grid from './grid';
 
-const App = () => {
-  return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Grid />
-      </BrowserRouter>
-    </Provider>
-  );
-};
+const App = () => (
+  <Provider store={store}>
+    <BrowserRouter>
+      <Grid />
+    </BrowserRouter>
+  </Provider>
+);
 
 export default App;

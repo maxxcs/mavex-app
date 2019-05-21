@@ -8,17 +8,15 @@ import Workspace from '../../workspace/index';
 import Channels from '../../channels/index';
 import Terminals from '../../terminals/index';
 
-const Sections = () => {
-  return (
-    <Switch>
-      <Route path="/" exact={true} component={Home} />
-      <PrivateRoute path="/dashboard" exact={true} component={Dashboard} />
-      <PrivateRoute path="/workspace" exact={true} component={Workspace} />
-      <PrivateRoute path="/channels" exact={true} component={Channels} />
-      <PrivateRoute path="/terminals" exact={true} component={Terminals} />
-      {/* <Route path="*" component={Home} /> */}
-    </Switch>
-  );
-};
+const Sections = () => (
+  <Switch>
+    <Route path="/" exact component={Home} />
+    <PrivateRoute path="/dashboard" exact component={Dashboard} />
+    <PrivateRoute path="/workspace" exact component={Workspace} />
+    <PrivateRoute path="/channels" exact component={Channels} />
+    <PrivateRoute path="/terminals" exact component={Terminals} />
+    {/* <Route path="*" component={Home} /> */}
+  </Switch>
+);
 
 export default Sections;

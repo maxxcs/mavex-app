@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  displayTerminalForm: false
+  displayTerminalForm: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
