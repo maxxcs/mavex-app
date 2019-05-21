@@ -21,7 +21,12 @@ const TerminalScreen = () => {
   };
 
   return (
-    <div id="terminal-screen" className="flex-column" onClick={handleClickContainer}>
+    <div
+      id="terminal-screen"
+      className="flex-column"
+      onClick={handleClickContainer}
+      role="application"
+    >
       <div id="terminal-header" className="flex-row">
         <div style={{ width: 60, minWidth: 60 }}>
           <Icon icon="circle" style={{ color: '#852821', marginLeft: 10, marginRight: 6 }} />
@@ -32,9 +37,9 @@ const TerminalScreen = () => {
           <strong>home</strong>
         </div>
         <div className="flex-row" style={{ width: 60, minWidth: 60, justifyContent: 'flex-end' }}>
-          <a>
+          <button type="button">
             <Icon icon="toggle-down" style={{ marginRight: 10, color: '#919191' }} />
-          </a>
+          </button>
         </div>
       </div>
       <div id="terminal-stack" ref={terminalContentRef} className="full">

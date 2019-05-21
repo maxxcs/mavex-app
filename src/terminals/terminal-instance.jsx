@@ -12,19 +12,20 @@ const TerminalInstance = ({
     <div className="flex-column terminal-instance instance-item">
       <div className="flex-row full center-alt">
         <div className="terminal-instance-title" style={{ color: isActual() }}>
-          <a onClick={() => Alert.info('Changing terminal... or not.')}>
+          <button type="button" onClick={() => Alert.info('Changing terminal... or not.')}>
             <Icon icon="server" style={{ fontSize: 18, marginRight: 5 }} />
             <strong>{name}</strong>
-          </a>
+          </button>
         </div>
         <div className="flex-row terminal-instance-menu">
           <Whisper delay={250} placement="top" trigger="hover" speaker={<Tooltip>Resync</Tooltip>}>
-            <a
+            <button
+              type="button"
               className="highlight"
               onClick={() => Alert.success('So much synchronization, very updated!')}
             >
               <Icon icon="refresh" style={{ fontSize: 18 }} />
-            </a>
+            </button>
           </Whisper>
           <Whisper
             delay={250}
@@ -32,12 +33,13 @@ const TerminalInstance = ({
             trigger="hover"
             speaker={<Tooltip>Settings</Tooltip>}
           >
-            <a
+            <button
+              type="button"
               className="highlight"
               onClick={() => Alert.warning('So much configuration, very options!')}
             >
               <Icon icon="sliders" style={{ fontSize: 18 }} />
-            </a>
+            </button>
           </Whisper>
           <Whisper
             delay={250}
@@ -45,12 +47,13 @@ const TerminalInstance = ({
             trigger="hover"
             speaker={<Tooltip>Delete</Tooltip>}
           >
-            <a
+            <button
+              type="button"
               className="highlight"
               onClick={() => Alert.error('So much deletion, very erasable!')}
             >
               <Icon icon="trash2" style={{ fontSize: 18 }} />
-            </a>
+            </button>
           </Whisper>
         </div>
       </div>

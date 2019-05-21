@@ -84,7 +84,7 @@ h1 {
   font-weight: bold;
 }
 
-a {
+button {
   cursor: pointer;
   padding: 0;
   margin: 0;
@@ -93,28 +93,38 @@ a {
   text-decoration: inherit;
 }
 
-a:link {
+button:link {
   color: inherit;
   background-color: inherit;
   text-decoration: inherit;
 }
 
-a:visited {
+button:visited {
   color: inherit;
   background-color: inherit;
   text-decoration: inherit;
 }
 
-a:hover {
+button:hover {
   color: inherit;
   background-color: inherit;
   text-decoration: inherit;
 }
 
-a:active {
+button:active {
   color: inherit;
   background-color: inherit;
   text-decoration: inherit;
+}
+
+button:active {
+  color: inherit;
+  background-color: inherit;
+  text-decoration: inherit;
+}
+
+button:focus {
+  outline: none;
 }
 
 #app {
@@ -125,6 +135,34 @@ a:active {
   right: 0;
   overflow: hidden;
   z-index: 0;
+}
+
+#brand {
+  min-width: 60px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#header {
+  justify-content: space-between;
+  height: 40px;
+  padding: 0px 15px;
+  background-color: #2b2b2b;
+  color: #b1b1b1;
+  border-bottom: 5px solid #303030;
+}
+
+#footer {
+  justify-content: flex-end;
+  height: 25;
+  font-size: 12;
+  padding: 0px 5px;
+  background-color: #2b2b2b;
+  color: #b1b1b1;
+  border-top: 5px solid #303030;
 }
 
 ::-webkit-scrollbar {

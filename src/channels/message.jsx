@@ -18,9 +18,9 @@ const Message = ({
     />
     <div className="flex-column msg-section">
       <div className="msg-header">
-        <a style={{ marginRight: 8 }}>
+        <button type="button" style={{ marginRight: 8 }}>
           <strong>{username}</strong>
-        </a>
+        </button>
         <span style={{ color: '#555' }}>{date}</span>
       </div>
       <div className="msg-content">

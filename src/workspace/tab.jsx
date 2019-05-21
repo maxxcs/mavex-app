@@ -6,15 +6,15 @@ const Tab = ({ fileId, actual, filename }) => {
 
   return (
     <div className={cssContainer}>
-      <a>
+      <button type="button">
         <span style={{ margin: '0px 3px' }}>
           <Icon icon="file" />
         </span>
         <span style={{ margin: '0px 3px' }}>{filename}</span>
-      </a>
-      <a className="file-tab-close">
+      </button>
+      <button type="button" className="file-tab-close">
         <Icon icon="close" style={{ fontSize: 10, fontWeight: '900' }} />
-      </a>
+      </button>
     </div>
   );
 };

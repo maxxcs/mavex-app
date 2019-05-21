@@ -16,7 +16,7 @@ const Editor = () => {
 
   return (
     <div className="scrollable-parent full">
-      <div ref={editorRef} className="scrollable-child full" />
+      <div ref={editorRef} className="scrollable-child full" role="application" />
     </div>
   );
 };

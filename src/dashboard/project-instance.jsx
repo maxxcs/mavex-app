@@ -10,19 +10,20 @@ const ProjectInstance = ({ id, actual, name }) => {
     <div className="flex-column project-instance instance-item">
       <div className="flex-row full center-alt">
         <div className="project-instance-title" style={{ color: isActual() }}>
-          <a onClick={() => Alert.info('Changing project... or not.')}>
+          <button type="button" onClick={() => Alert.info('Changing project... or not.')}>
             <Icon icon="folder" style={{ fontSize: 18, marginRight: 5 }} />
             <strong>{name}</strong>
-          </a>
+          </button>
         </div>
         <div className="flex-row project-instance-menu">
           <Whisper delay={250} placement="top" trigger="hover" speaker={<Tooltip>Invite</Tooltip>}>
-            <a
+            <button
+              type="button"
               className="highlight"
               onClick={() => Alert.success('So much invitation, very collaborative!')}
             >
               <Icon icon="send-o" style={{ fontSize: 18 }} />
-            </a>
+            </button>
           </Whisper>
           <Whisper
             delay={250}
@@ -30,12 +31,13 @@ const ProjectInstance = ({ id, actual, name }) => {
             trigger="hover"
             speaker={<Tooltip>Edit</Tooltip>}
           >
-            <a
+            <button
+              type="button"
               className="highlight"
               onClick={() => Alert.warning('So much edition, very hackable!')}
             >
               <Icon icon="edit" style={{ fontSize: 18 }} />
-            </a>
+            </button>
           </Whisper>
           <Whisper
             delay={250}
@@ -43,12 +45,13 @@ const ProjectInstance = ({ id, actual, name }) => {
             trigger="hover"
             speaker={<Tooltip>Delete</Tooltip>}
           >
-            <a
+            <button
+              type="button"
               className="highlight"
               onClick={() => Alert.error('So much deletion, very erasable!')}
             >
               <Icon icon="trash2" style={{ fontSize: 18 }} />
-            </a>
+            </button>
           </Whisper>
         </div>
       </div>

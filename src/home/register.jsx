@@ -56,14 +56,18 @@ const Register = ({ changeDisplay }) => (
     </div>
     <div style={{ width: 300, marginBottom: 10 }}>
       <span style={{ fontSize: 10, color: '#AAA' }}>
-        By registering, you agree to Mavex's
+        By registering, you agree to Mavex&apos;s
         {' '}
-        <a className="link">Terms of Service</a>
+        <button type="button" className="link">
+          Terms of Service
+        </button>
         {' '}
-and
+        and
         {' '}
-        <a className="link">Privacy Policy</a>
-.
+        <button type="button" className="link">
+          Privacy Policy
+        </button>
+        .
       </span>
     </div>
     <div className="flex-column" style={{ width: 300, marginBottom: 20 }}>
@@ -73,9 +77,9 @@ and
     </div>
     <div>
       <span>
-        <a className="link" onClick={() => changeDisplay('LOGIN')}>
+        <button type="button" className="link" onClick={() => changeDisplay('LOGIN')}>
           Already have an account?
-        </a>
+        </button>
       </span>
     </div>
   </div>
