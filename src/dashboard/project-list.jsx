@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Button, Divider } from 'rsuite';
@@ -21,14 +22,18 @@ const ProjectList = ({ displayDrawer }) => (
     </div>
     <div className="scrollable-parent full">
       <div className="scrollable-child" style={{ height: '100%', overflow: 'auto' }}>
-        <ProjectInstance id="1" actual="3" name="mavex-app" />
-        <ProjectInstance id="2" actual="3" name="iclovis" />
-        <ProjectInstance id="3" actual="3" name="engine-awesome" />
-        <ProjectInstance id="4" actual="3" name="college-project" />
+        <ProjectInstance id="1" actualId="3" name="mavex-app" />
+        <ProjectInstance id="2" actualId="3" name="iclovis" />
+        <ProjectInstance id="3" actualId="3" name="engine-awesome" />
+        <ProjectInstance id="4" actualId="3" name="college-project" />
       </div>
     </div>
   </div>
 );
+
+ProjectList.propTypes = {
+  displayDrawer: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = dispatch => bindActionCreators(
   {

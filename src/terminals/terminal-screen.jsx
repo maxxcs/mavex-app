@@ -10,7 +10,7 @@ const TerminalScreen = () => {
     if (evt.keyCode === 13 && command !== '') {
       console.log(command);
       setCommand('');
-      return false;
+      // return false;
     }
   };
 
@@ -25,7 +25,9 @@ const TerminalScreen = () => {
       id="terminal-screen"
       className="flex-column"
       onClick={handleClickContainer}
+      onKeyDown={() => {}}
       role="application"
+      aria-hidden
     >
       <div id="terminal-header" className="flex-row">
         <div style={{ width: 60, minWidth: 60 }}>

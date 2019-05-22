@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Message = ({
   msgId, userId, avatar, username, content, date,
@@ -29,5 +30,14 @@ const Message = ({
     </div>
   </div>
 );
+
+Message.propTypes = {
+  msgId: PropTypes.string.isRequired,
+  userId: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+};
 
 export default Message;

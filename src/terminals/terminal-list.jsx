@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Button, Divider } from 'rsuite';
@@ -21,13 +22,23 @@ const TerminalList = ({ displayModal }) => (
     </div>
     <div className="scrollable-parent full">
       <div className="scrollable-child" style={{ height: '100%', overflow: 'auto' }}>
-        <TerminalInstance id="1" actual="1" name="home" msg="Showtime" color="#5e6d50" />
-        <TerminalInstance id="2" actual="1" name="office" msg="Offline" color="#a03a32" />
-        <TerminalInstance id="3" actual="1" name="server" msg="Waiting for sync" color="#967f4b" />
+        <TerminalInstance id="1" actualId="1" name="home" msg="Showtime" msgColor="#5e6d50" />
+        <TerminalInstance id="2" actualId="1" name="office" msg="Offline" msgColor="#a03a32" />
+        <TerminalInstance
+          id="3"
+          actualId="1"
+          name="server"
+          msg="Waiting for sync"
+          msgColor="#967f4b"
+        />
       </div>
     </div>
   </div>
 );
+
+TerminalList.propTypes = {
+  displayModal: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = dispatch => bindActionCreators(
   {

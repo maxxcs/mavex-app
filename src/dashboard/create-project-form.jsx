@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
@@ -193,6 +194,11 @@ const CreateProjectForm = ({ display, displayDrawer }) => (
     </Drawer.Footer>
   </Drawer>
 );
+
+CreateProjectForm.propTypes = {
+  display: PropTypes.bool.isRequired,
+  displayDrawer: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   display: state.dashboard.displayProjectForm,

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { InputGroup, Input, Button } from 'rsuite';
 
 const Register = ({ changeDisplay }) => (
@@ -84,5 +85,9 @@ const Register = ({ changeDisplay }) => (
     </div>
   </div>
 );
+
+Register.propTypes = {
+  changeDisplay: PropTypes.func.isRequired,
+};
 
 export default Register;

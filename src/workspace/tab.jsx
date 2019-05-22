@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from 'rsuite';
 
-const Tab = ({ fileId, actual, filename }) => {
-  const cssContainer = fileId === actual ? 'flex-row file-tab file-tab-actual' : 'flex-row file-tab';
+const Tab = ({ fileId, actualId, filename }) => {
+  const cssContainer = fileId === actualId ? 'flex-row file-tab file-tab-actual' : 'flex-row file-tab';
 
   return (
     <div className={cssContainer}>
@@ -17,6 +18,12 @@ const Tab = ({ fileId, actual, filename }) => {
       </button>
     </div>
   );
+};
+
+Tab.propTypes = {
+  fileId: PropTypes.string.isRequired,
+  actualId: PropTypes.string.isRequired,
+  filename: PropTypes.string.isRequired,
 };
 
 export default Tab;

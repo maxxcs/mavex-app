@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
@@ -36,6 +37,11 @@ const CreateTerminalForm = ({ display, displayModal }) => (
     </Modal.Footer>
   </Modal>
 );
+
+CreateTerminalForm.propTypes = {
+  display: PropTypes.bool.isRequired,
+  displayModal: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({ display: state.terminals.displayTerminalForm });
 const mapDispatchToProps = dispatch => bindActionCreators(

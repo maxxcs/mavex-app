@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Icon, Whisper, Tooltip, Alert,
 } from 'rsuite';
 
 const TerminalInstance = ({
-  id, actual, name, msg, color,
+  id, actualId, name, msg, msgColor,
 }) => {
-  const isActual = () => (id === actual ? '#4179a8' : '#CCC');
+  const isActual = () => (id === actualId ? '#4179a8' : '#CCC');
 
   return (
     <div className="flex-column terminal-instance instance-item">
@@ -58,13 +59,21 @@ const TerminalInstance = ({
         </div>
       </div>
       <div className="flex-row center full center-alt">
-        <div className="flex-row center full terminal-instance-msg" style={{ color }}>
+        <div className="flex-row center full terminal-instance-msg" style={{ color: msgColor }}>
           <Icon icon="circle" style={{ marginRight: 5 }} />
           <span>{msg}</span>
         </div>
       </div>
     </div>
   );
+};
+
+TerminalInstance.propTypes = {
+  id: PropTypes.string.isRequired,
+  actualId: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  msg: PropTypes.string.isRequired,
+  msgColor: PropTypes.string.isRequired,
 };
 
 export default TerminalInstance;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Sidenav, Nav, Icon } from 'rsuite';
 
@@ -59,6 +60,11 @@ const Menu = ({ history, location }) => {
       </Sidenav.Body>
     </Sidenav>
   );
+};
+
+Menu.propTypes = {
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default withRouter(Menu);

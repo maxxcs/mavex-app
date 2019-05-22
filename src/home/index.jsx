@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { isAuthenticated } from '../config/auth';
 
@@ -27,6 +28,10 @@ const Home = ({ history }) => {
       <div className="flex-row full center">{displayContent()}</div>
     </>
   );
+};
+
+Home.propTypes = {
+  history: PropTypes.object.isRequired,
 };
 
 export default withRouter(Home);

@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Icon, Whisper, Tooltip, Alert,
 } from 'rsuite';
 
-const ProjectInstance = ({ id, actual, name }) => {
-  const isActual = () => (id === actual ? '#4179a8' : '#CCC');
+const ProjectInstance = ({ id, actualId, name }) => {
+  const isActual = () => (id === actualId ? '#4179a8' : '#CCC');
 
   return (
     <div className="flex-column project-instance instance-item">
@@ -58,6 +59,12 @@ const ProjectInstance = ({ id, actual, name }) => {
       <div className="flex-row center full center-alt" />
     </div>
   );
+};
+
+ProjectInstance.propTypes = {
+  id: PropTypes.string.isRequired,
+  actualId: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default ProjectInstance;

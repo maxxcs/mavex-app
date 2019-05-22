@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Icon } from 'rsuite';
 import { isAuthenticated } from '../../config/auth';
@@ -20,6 +21,10 @@ const HeaderCointainer = ({ history }) => {
       <div>{renderUserMenu()}</div>
     </div>
   );
+};
+
+HeaderCointainer.propTypes = {
+  history: PropTypes.object.isRequired,
 };
 
 export default withRouter(HeaderCointainer);
