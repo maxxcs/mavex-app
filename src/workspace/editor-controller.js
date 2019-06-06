@@ -1,7 +1,7 @@
-import * as monaco from 'monaco-editor';
-import ChangesWorker from 'worker-loader!./workers/changes.worker';
+import * as monaco from 'monaco-editor'; // eslint-disable-line import/no-unresolved
 import client from '../config/client';
 import CrdtService from './crdt-service';
+import MonacoAdapterWorker from './workers/monaco-adapter.wk';
 
 function editorController(editorRef) {
   const editor = monaco.editor.create(editorRef.current, {
@@ -13,17 +13,17 @@ function editorController(editorRef) {
   });
   const model = editor.getModel();
   const storage = new CrdtService(Date.now().toString());
-  const changesWorker = new ChangesWorker();
+  const adapter = new MonacoAdapterWorker();
   let preventEmit = false;
 
-  model.onDidChangeContent((event) => {
+  model.onDidChangeContent((evt) => {
     if (preventEmit) return;
-    // console.log(event);
-    const { changes } = event;
-    changesWorker.postMessage(changes);
+    // console.log(evt);
+    const { changes } = evt;
+    adapter.postMessage(changes);
   });
 
-  changesWorker.onmessage = ({ data }) => {
+  adapter.onmessage = ({ data }) => {
     const op = storage.executeChange(data);
     client.emit('editor:broadcastOperation', op);
   };
@@ -73,7 +73,7 @@ function editorController(editorRef) {
 
   editor.onDidDispose(() => {
     model.dispose();
-    changesWorker.terminate();
+    adapter.terminate();
     client.removeListener('server:executeOperation');
     client.removeListener('server:sendFileContent');
   });

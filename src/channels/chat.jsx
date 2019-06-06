@@ -32,7 +32,7 @@ const Chat = () => {
     <div className="flex-column full">
       <div id="chat-header" className="flex-row">
         <div>
-          <span style={{ fontSize: 22, color: '#999' }}>
+          <span style={{ fontSize: 20, color: '#999' }}>
             <strong>#gambiarras</strong>
           </span>
         </div>

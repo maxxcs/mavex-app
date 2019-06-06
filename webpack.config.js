@@ -33,6 +33,15 @@ module.exports = {
         ],
       },
       {
+        test: /\.wk\.js$/,
+        exclude: '/node_modules/',
+        use: [
+          {
+            loader: 'worker-loader',
+          },
+        ],
+      },
+      {
         test: /\.css$/,
         exclude: '/node_modules/',
         use: [

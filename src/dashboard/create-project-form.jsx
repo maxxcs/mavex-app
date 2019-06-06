@@ -34,7 +34,11 @@ const CreateProjectForm = ({ display, displayDrawer }) => (
               </InputGroup.Addon>
               <Input type="text" autoFocus onPressEnter={() => displayDrawer(false)} />
             </InputGroup>
-            <Whisper placement="topLeft" trigger="hover" speaker={<Tooltip>Required</Tooltip>}>
+            <Whisper
+              placement="topLeft"
+              trigger="hover"
+              speaker={<Tooltip>Only characters allowed in traditional directories.</Tooltip>}
+            >
               <Icon icon="help-o" style={{ color: '#666' }} />
             </Whisper>
           </div>
@@ -52,7 +56,7 @@ const CreateProjectForm = ({ display, displayDrawer }) => (
             <Whisper
               placement="topLeft"
               trigger="hover"
-              speaker={<Tooltip>If private, this is required.</Tooltip>}
+              speaker={<Tooltip>A password will be required to join the project.</Tooltip>}
             >
               <Icon icon="help-o" style={{ color: '#666' }} />
             </Whisper>
@@ -61,14 +65,27 @@ const CreateProjectForm = ({ display, displayDrawer }) => (
 
         <div className="flex-row" style={{ width: 230, minHeight: 50, alignItems: 'center' }}>
           <Checkbox value="public">Public</Checkbox>
-          <Whisper placement="topLeft" trigger="hover" speaker={<Tooltip>Required</Tooltip>}>
+          <Whisper
+            placement="topLeft"
+            trigger="hover"
+            speaker={(
+              <Tooltip>
+                If public, the project will be publicly indexed to any user. Otherwise, only invited
+                users could join the project.
+              </Tooltip>
+)}
+          >
             <Icon icon="help-o" style={{ color: '#666', marginLeft: 5 }} />
           </Whisper>
         </div>
 
         <Divider style={{ marginTop: 5 }}>
           <span>Files Privileges</span>
-          <Whisper placement="topLeft" trigger="hover" speaker={<Tooltip>Required</Tooltip>}>
+          <Whisper
+            placement="topLeft"
+            trigger="hover"
+            speaker={<Tooltip>Sets the Workspace permissions for new users.</Tooltip>}
+          >
             <Icon icon="help-o" style={{ color: '#666', marginLeft: 5 }} />
           </Whisper>
         </Divider>
@@ -81,7 +98,7 @@ const CreateProjectForm = ({ display, displayDrawer }) => (
             <Whisper
               placement="topLeft"
               trigger="hover"
-              speaker={<Tooltip>Required</Tooltip>}
+              speaker={<Tooltip>All new users can read the files by default.</Tooltip>}
               delayShow={300}
             >
               <Toggle size="lg" checkedChildren="Read" unCheckedChildren="Read" defaultChecked />
@@ -89,7 +106,7 @@ const CreateProjectForm = ({ display, displayDrawer }) => (
             <Whisper
               placement="topLeft"
               trigger="hover"
-              speaker={<Tooltip>Required</Tooltip>}
+              speaker={<Tooltip>All new users can write to files by default.</Tooltip>}
               delayShow={300}
             >
               <Toggle size="lg" checkedChildren="Write" unCheckedChildren="Write" defaultChecked />
@@ -97,7 +114,9 @@ const CreateProjectForm = ({ display, displayDrawer }) => (
             <Whisper
               placement="topLeft"
               trigger="hover"
-              speaker={<Tooltip>Required</Tooltip>}
+              speaker={
+                <Tooltip>All new users can create, change and remove files by default.</Tooltip>
+              }
               delayShow={300}
             >
               <Toggle size="lg" checkedChildren="Edit" unCheckedChildren="Edit" defaultChecked />
@@ -107,7 +126,11 @@ const CreateProjectForm = ({ display, displayDrawer }) => (
 
         <Divider>
           <span>Channels Privileges</span>
-          <Whisper placement="topLeft" trigger="hover" speaker={<Tooltip>Required</Tooltip>}>
+          <Whisper
+            placement="topLeft"
+            trigger="hover"
+            speaker={<Tooltip>Sets the Channels permissions for new users.</Tooltip>}
+          >
             <Icon icon="help-o" style={{ color: '#666', marginLeft: 5 }} />
           </Whisper>
         </Divider>
@@ -120,7 +143,7 @@ const CreateProjectForm = ({ display, displayDrawer }) => (
             <Whisper
               placement="topLeft"
               trigger="hover"
-              speaker={<Tooltip>Required</Tooltip>}
+              speaker={<Tooltip>All new users can read the channels by default.</Tooltip>}
               delayShow={300}
             >
               <Toggle size="lg" checkedChildren="Read" unCheckedChildren="Read" defaultChecked />
@@ -128,7 +151,7 @@ const CreateProjectForm = ({ display, displayDrawer }) => (
             <Whisper
               placement="topLeft"
               trigger="hover"
-              speaker={<Tooltip>Required</Tooltip>}
+              speaker={<Tooltip>All new users can write to channels by default.</Tooltip>}
               delayShow={300}
             >
               <Toggle size="lg" checkedChildren="Write" unCheckedChildren="Write" defaultChecked />
@@ -136,7 +159,9 @@ const CreateProjectForm = ({ display, displayDrawer }) => (
             <Whisper
               placement="topLeft"
               trigger="hover"
-              speaker={<Tooltip>Required</Tooltip>}
+              speaker={
+                <Tooltip>All new users can create, change and remove channels by default.</Tooltip>
+              }
               delayShow={300}
             >
               <Toggle size="lg" checkedChildren="Edit" unCheckedChildren="Edit" defaultChecked />
@@ -146,7 +171,11 @@ const CreateProjectForm = ({ display, displayDrawer }) => (
 
         <Divider>
           <span>Terminals Privileges</span>
-          <Whisper placement="topLeft" trigger="hover" speaker={<Tooltip>Required</Tooltip>}>
+          <Whisper
+            placement="topLeft"
+            trigger="hover"
+            speaker={<Tooltip>Sets the Terminals permissions for new users.</Tooltip>}
+          >
             <Icon icon="help-o" style={{ color: '#666', marginLeft: 5 }} />
           </Whisper>
         </Divider>
@@ -159,7 +188,7 @@ const CreateProjectForm = ({ display, displayDrawer }) => (
             <Whisper
               placement="topLeft"
               trigger="hover"
-              speaker={<Tooltip>Required</Tooltip>}
+              speaker={<Tooltip>All new users can read the terminals by default.</Tooltip>}
               delayShow={300}
             >
               <Toggle size="lg" checkedChildren="Read" unCheckedChildren="Read" defaultChecked />
@@ -167,7 +196,7 @@ const CreateProjectForm = ({ display, displayDrawer }) => (
             <Whisper
               placement="topLeft"
               trigger="hover"
-              speaker={<Tooltip>Required</Tooltip>}
+              speaker={<Tooltip>All new users can write to terminals by default.</Tooltip>}
               delayShow={300}
             >
               <Toggle size="lg" checkedChildren="Write" unCheckedChildren="Write" defaultChecked />
@@ -175,7 +204,9 @@ const CreateProjectForm = ({ display, displayDrawer }) => (
             <Whisper
               placement="topLeft"
               trigger="hover"
-              speaker={<Tooltip>Required</Tooltip>}
+              speaker={
+                <Tooltip>All new users can create, change and remove terminals by default.</Tooltip>
+              }
               delayShow={300}
             >
               <Toggle size="lg" checkedChildren="Edit" unCheckedChildren="Edit" defaultChecked />

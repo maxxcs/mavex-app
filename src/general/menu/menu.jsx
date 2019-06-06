@@ -18,7 +18,7 @@ const Menu = ({ history, location }) => {
     <Sidenav
       expanded={false}
       activeKey={selected}
-      style={{ height: '100%', backgroundColor: '#303030' }}
+      style={{ height: '100%', backgroundColor: '#303030', overflow: 'hidden' }}
     >
       <Sidenav.Body
         className="flex-column"
@@ -63,8 +63,26 @@ const Menu = ({ history, location }) => {
 };
 
 Menu.propTypes = {
-  history: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
+  history: PropTypes.shape({
+    action: PropTypes.string,
+    block: PropTypes.func,
+    createHref: PropTypes.func,
+    go: PropTypes.func,
+    goBack: PropTypes.func,
+    goForward: PropTypes.func,
+    length: PropTypes.number,
+    listen: PropTypes.func,
+    location: PropTypes.object,
+    push: PropTypes.func,
+    replace: PropTypes.func,
+  }).isRequired,
+  location: PropTypes.shape({
+    hash: PropTypes.string,
+    key: PropTypes.string,
+    pathname: PropTypes.string,
+    search: PropTypes.string,
+    state: PropTypes.object,
+  }).isRequired,
 };
 
 export default withRouter(Menu);

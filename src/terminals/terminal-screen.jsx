@@ -26,8 +26,7 @@ const TerminalScreen = () => {
       className="flex-column"
       onClick={handleClickContainer}
       onKeyDown={() => {}}
-      role="application"
-      aria-hidden
+      role="presentation"
     >
       <div id="terminal-header" className="flex-row">
         <div style={{ width: 60, minWidth: 60 }}>
@@ -40,7 +39,7 @@ const TerminalScreen = () => {
         </div>
         <div className="flex-row" style={{ width: 60, minWidth: 60, justifyContent: 'flex-end' }}>
           <button type="button">
-            <Icon icon="toggle-down" style={{ marginRight: 10, color: '#919191' }} />
+            <Icon icon="thumb-tack" style={{ marginRight: 10, color: '#919191' }} />
           </button>
         </div>
       </div>

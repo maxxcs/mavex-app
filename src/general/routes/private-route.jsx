@@ -15,9 +15,19 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   />
 );
 
+PrivateRoute.defaultProps = {
+  location: {},
+};
+
 PrivateRoute.propTypes = {
   component: PropTypes.elementType.isRequired,
-  location: PropTypes.object,
+  location: PropTypes.shape({
+    hash: PropTypes.string,
+    key: PropTypes.string,
+    pathname: PropTypes.string,
+    search: PropTypes.string,
+    state: PropTypes.object,
+  }),
 };
 
 export default PrivateRoute;

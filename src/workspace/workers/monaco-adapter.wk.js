@@ -1,10 +1,11 @@
+/* eslint-disable no-restricted-globals */
 self.onmessage = ({ data }) => {
   const changes = data;
-  for (let i = 0; i < changes.length; i++) {
+  for (let i = 0; i < changes.length; i += 1) {
     const change = changes[i];
     // console.log(change);
     console.log({
-      char: change.text,
+      text: change.text,
       startLineNumber: change.range.startLineNumber,
       startColumn: change.range.startColumn,
       endLineNumber: change.range.endLineNumber,
@@ -22,24 +23,25 @@ self.onmessage = ({ data }) => {
       let n = lastOffset;
       while (n > change.rangeOffset) {
         if (lines > 0) {
-          lines--;
+          lines -= 1;
           linesToRemove.push({ type: -1, char: '', index: change.rangeOffset + lines });
           // self.postMessage({ type: -1, char: '', index: k-1 });
         } else {
           self.postMessage({ type: 0, char: '', index: n - 1 });
         }
-        n--;
+        n -= 1;
       }
 
       // console.log(linesToRemove);
-      for (let n = 0; n < linesToRemove.length; n++) {
-        self.postMessage(linesToRemove[n]);
+      for (let k = 0; k < linesToRemove.length; k += 1) {
+        self.postMessage(linesToRemove[k]);
       }
 
       const characters = change.text.split('');
       let stepRangeOffset = change.rangeOffset;
-      for (let k = 0; k < characters.length; k++) {
-        self.postMessage({ type: 1, char: characters[k], index: stepRangeOffset++ });
+      for (let k = 0; k < characters.length; k += 1) {
+        self.postMessage({ type: 1, char: characters[k], index: stepRangeOffset });
+        stepRangeOffset += 1;
       }
     } else if (change.text !== '') {
       if (change.text.length > 1) {
@@ -47,8 +49,9 @@ self.onmessage = ({ data }) => {
         // console.log(change);
         const characters = change.text.split('');
         let stepRangeOffset = change.rangeOffset;
-        for (let k = 0; k < characters.length; k++) {
-          self.postMessage({ type: 1, char: characters[k], index: stepRangeOffset++ });
+        for (let k = 0; k < characters.length; k += 1) {
+          self.postMessage({ type: 1, char: characters[k], index: stepRangeOffset });
+          stepRangeOffset += 1;
         }
       } else {
         // console.log('handle char insertion without pre-selection');
