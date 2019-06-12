@@ -21,7 +21,7 @@ const ChannelList = () => (
               Fulano
             </button>
             <button type="button">
-              <Icon icon="ellipsis-h" />
+              <Icon icon="user-circle-o" />
             </button>
           </div>
         </div>

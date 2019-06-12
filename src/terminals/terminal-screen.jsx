@@ -55,7 +55,7 @@ const TerminalScreen = () => {
             id="terminal-input"
             ref={inputRef}
             type="text"
-            autoFocus
+            autoFocus // eslint-disable-line jsx-a11y/no-autofocus
             autoComplete="off"
             spellCheck={false}
             value={command}

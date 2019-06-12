@@ -14,7 +14,7 @@ const HeaderCointainer = ({ history }) => {
   return (
     <div id="header" className="flex-row full center">
       <div id="brand" onClick={() => history.push('/')} role="presentation">
-        <Icon icon="cube" style={{ marginRight: 3 }} />
+        <Icon icon="cube" style={{ marginRight: '3px', fontSize: '15px' }} />
         <h1>Mavex</h1>
       </div>
       <div>{renderProjectMenu()}</div>
