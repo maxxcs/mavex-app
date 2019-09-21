@@ -1,9 +1,11 @@
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+
+const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
-  mode: 'development',
+  mode,
   entry: './src/index.jsx',
   output: {
     path: `${__dirname}/public`,
@@ -16,7 +18,11 @@ module.exports = {
       modules: `${__dirname}/node_modules`,
     },
   },
-  plugins: [new MiniCssExtractPlugin({ filename: 'style.css' }), new MonacoWebpackPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin({ filename: 'style.css' }),
+    new MonacoWebpackPlugin(),
+    new FriendlyErrorsPlugin(),
+  ],
   module: {
     rules: [
       {
@@ -81,6 +87,9 @@ module.exports = {
         ],
       },
     ],
+  },
+  stats: {
+    children: false,
   },
   devServer: {
     port: 9000,
