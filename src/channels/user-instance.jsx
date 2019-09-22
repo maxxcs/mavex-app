@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Icon } from 'rsuite';
 
 const UserInstance = ({ id, name }) => (
@@ -10,10 +9,5 @@ const UserInstance = ({ id, name }) => (
     </button>
   </div>
 );
-
-UserInstance.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-};
 
 export default UserInstance;

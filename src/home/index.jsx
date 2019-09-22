@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { isAuthenticated } from '../config/auth';
 
@@ -28,22 +27,6 @@ const Home = ({ history }) => {
       <div className="flex-row full center">{displayContent()}</div>
     </>
   );
-};
-
-Home.propTypes = {
-  history: PropTypes.shape({
-    action: PropTypes.string,
-    block: PropTypes.func,
-    createHref: PropTypes.func,
-    go: PropTypes.func,
-    goBack: PropTypes.func,
-    goForward: PropTypes.func,
-    length: PropTypes.number,
-    listen: PropTypes.func,
-    location: PropTypes.object,
-    push: PropTypes.func,
-    replace: PropTypes.func,
-  }).isRequired,
 };
 
 export default withRouter(Home);

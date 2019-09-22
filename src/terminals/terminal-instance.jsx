@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Icon, Whisper, Tooltip, Alert,
 } from 'rsuite';
@@ -66,14 +65,6 @@ const TerminalInstance = ({
       </div>
     </div>
   );
-};
-
-TerminalInstance.propTypes = {
-  id: PropTypes.string.isRequired,
-  actualId: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  msg: PropTypes.string.isRequired,
-  msgColor: PropTypes.string.isRequired,
 };
 
 export default TerminalInstance;

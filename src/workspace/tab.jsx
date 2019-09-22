@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Icon } from 'rsuite';
 
 const Tab = ({ fileId, actualId, filename }) => {
@@ -18,12 +17,6 @@ const Tab = ({ fileId, actualId, filename }) => {
       </button>
     </div>
   );
-};
-
-Tab.propTypes = {
-  fileId: PropTypes.string.isRequired,
-  actualId: PropTypes.string.isRequired,
-  filename: PropTypes.string.isRequired,
 };
 
 export default Tab;

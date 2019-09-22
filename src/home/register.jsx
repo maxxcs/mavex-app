@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import {
   InputGroup, Input, Button, Alert,
 } from 'rsuite';
@@ -146,10 +145,6 @@ const Register = ({ changeDisplay }) => {
       </div>
     </form>
   );
-};
-
-Register.propTypes = {
-  changeDisplay: PropTypes.func.isRequired,
 };
 
 export default Register;

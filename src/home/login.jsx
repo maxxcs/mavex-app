@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 import {
   InputGroup, Input, Button, Divider, Alert,
@@ -100,10 +99,6 @@ const Login = ({ changeDisplay }) => {
       </div>
     </form>
   );
-};
-
-Login.propTypes = {
-  changeDisplay: PropTypes.func.isRequired,
 };
 
 export default Login;

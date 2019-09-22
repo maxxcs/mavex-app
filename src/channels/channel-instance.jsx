@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Icon } from 'rsuite';
 
 const ChannelInstance = ({ id, actualId, name }) => {
@@ -12,12 +11,6 @@ const ChannelInstance = ({ id, actualId, name }) => {
       </button>
     </div>
   );
-};
-
-ChannelInstance.propTypes = {
-  id: PropTypes.string.isRequired,
-  actualId: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
 };
 
 export default ChannelInstance;

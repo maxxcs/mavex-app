@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Dropdown, Icon } from 'rsuite';
 
 const UserMenu = ({ username }) => (
@@ -28,9 +27,5 @@ const UserMenu = ({ username }) => (
     </Dropdown>
   </div>
 );
-
-UserMenu.propTypes = {
-  username: PropTypes.string.isRequired,
-};
 
 export default UserMenu;

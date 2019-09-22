@@ -100,7 +100,7 @@ const CreateProjectForm = () => {
                   If public, the project will be publicly indexed to any user. Otherwise, only
                   invited users could join the project.
                 </Tooltip>
-)}
+              )}
             >
               <Icon icon="help-o" style={{ color: '#666', marginLeft: '5px' }} />
             </Whisper>
@@ -200,7 +200,7 @@ const CreateProjectForm = () => {
                   <Tooltip>
                     All new users can create, change and remove channels by default.
                   </Tooltip>
-)}
+                )}
                 delayShow={300}
               >
                 <Toggle size="lg" checkedChildren="Edit" unCheckedChildren="Edit" defaultChecked />
@@ -252,7 +252,7 @@ const CreateProjectForm = () => {
                   <Tooltip>
                     All new users can create, change and remove terminals by default.
                   </Tooltip>
-)}
+                )}
                 delayShow={300}
               >
                 <Toggle size="lg" checkedChildren="Edit" unCheckedChildren="Edit" defaultChecked />
