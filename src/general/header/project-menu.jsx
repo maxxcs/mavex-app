@@ -5,7 +5,7 @@ import { Dropdown, Icon } from 'rsuite';
 const ProjectMenu = ({ projectName }) => (
   <Dropdown
     title={projectName}
-    placement="bottomLeft"
+    placement="bottomStart"
     icon={<Icon icon="folder" style={{ fontSize: '15px' }} />}
   >
     <Dropdown.Item icon={<Icon icon="share" />}>Share and Invite</Dropdown.Item>

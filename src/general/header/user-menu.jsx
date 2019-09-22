@@ -9,7 +9,7 @@ const UserMenu = ({ username }) => (
     </button>
     <Dropdown
       title={username}
-      placement="bottomRight"
+      placement="bottomEnd"
       icon={<Icon icon="user" style={{ fontSize: '15px' }} />}
     >
       <Dropdown.Item panel style={{ padding: 10, width: 160 }}>

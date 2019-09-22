@@ -4,11 +4,12 @@
     "es6": true,
     "jest": true
   },
-  "extends": "airbnb",
+  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
