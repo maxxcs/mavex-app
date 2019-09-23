@@ -1,18 +1,25 @@
-import axios from 'axios';
+import decoder from 'jwt-decode';
+import store from '../config/store';
+import { userAuthenticate, userLogout } from '../general/actions';
 
-const TOKEN_KEY = 'jwt';
+const TOKEN_KEY = 'token';
 
-export const login = () => {
-  localStorage.setItem(TOKEN_KEY, 'TestLogin');
+export const login = token => {
+  localStorage.setItem(TOKEN_KEY, token);
+  store.dispatch(userAuthenticate(decoder(token)));
 };
 
 export const logout = () => {
   localStorage.removeItem(TOKEN_KEY);
+  store.dispatch(userLogout());
 };
 
 export const isAuthenticated = () => {
-  if (localStorage.getItem(TOKEN_KEY)) {
+  const token = localStorage.getItem(TOKEN_KEY);
+  if (token) {
+    if (!store.getState().general.user)
+      store.dispatch(userAuthenticate(decoder(token)));
     return true;
   }
-  return true;
+  return false;
 };

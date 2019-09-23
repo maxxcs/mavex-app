@@ -9,7 +9,7 @@ const ProjectMenu = ({ projectName }) => (
   >
     <Dropdown.Item icon={<Icon icon="share" />}>Share and Invite</Dropdown.Item>
     <Dropdown.Item icon={<Icon icon="setting" />}>Project Settings</Dropdown.Item>
-    <Dropdown.Item icon={<Icon icon="close" />}>Close</Dropdown.Item>
+    <Dropdown.Item icon={<Icon icon="close" />}>Exit Project</Dropdown.Item>
   </Dropdown>
 );
 

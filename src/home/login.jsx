@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
+import { login } from '../config/auth';
 import {
   InputGroup, Input, Button, Divider, Alert,
 } from 'rsuite';
 
-import { userAuthenticate } from '../general/actions';
-
-const Login = ({ changeDisplay }) => {
-  const dispatch = useDispatch();
+const Login = ({ changeDisplay, history }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
@@ -29,18 +27,24 @@ const Login = ({ changeDisplay }) => {
       evt.preventDefault();
       setBusy(true);
       if (!username || !password) {
-        Alert.warning('Login or password cannot be empty.');
         setBusy(false);
+        Alert.warning('Login or password cannot be empty.');
       } else {
         const { data } = await axios.post('http://localhost:8000/login', { username, password });
-        Alert.success('Success!');
-        console.log(data);
-        setBusy(false);
-        // dispatch(userAuthenticate(data));
+        if (data.token) {
+          setBusy(false);
+          Alert.success('Signed in successfully.');
+          login(data.token);
+          history.push('/dashboard');
+        } else {
+          setBusy(false);
+          Alert.warning('Something unexpected has occurred.');
+        }
       }
     } catch ({ response }) {
-      Alert.warning(response.data.message);
       setBusy(false);
+      Alert.warning(response.data.message);
+      setPassword('');
     }
   };
 
@@ -101,4 +105,4 @@ const Login = ({ changeDisplay }) => {
   );
 };
 
-export default Login;
+export default withRouter(Login);

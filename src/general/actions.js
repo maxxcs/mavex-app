@@ -1,4 +1,8 @@
-export const userAuthenticate = (username, token) => ({
+export const userAuthenticate = (user) => ({
   type: 'USER_AUTHENTICATE',
-  payload: user,
+  payload: user
+});
+
+export const userLogout = () => ({
+  type: 'USER_LOGOUT'
 });
