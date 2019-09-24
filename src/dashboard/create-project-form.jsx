@@ -62,29 +62,6 @@ const CreateProjectForm = () => {
 
           <div
             className="flex-row"
-            style={{ width: '100%', alignItems: 'center', marginBottom: '15px' }}
-          >
-            <InputGroup style={{ width: '300px', marginRight: '10px' }}>
-              <InputGroup.Addon>
-                <Icon icon="key" style={{ color: '#888' }} />
-              </InputGroup.Addon>
-              <Input
-                type="password"
-                placeholder="Project password"
-                onPressEnter={() => dispatch(displayProjectForm(false))}
-              />
-            </InputGroup>
-            <Whisper
-              placement="topLeft"
-              trigger="hover"
-              speaker={<Tooltip>A password will be required to join the project.</Tooltip>}
-            >
-              <Icon icon="help-o" style={{ color: '#666' }} />
-            </Whisper>
-          </div>
-
-          <div
-            className="flex-row"
             style={{ width: '230px', alignItems: 'center', marginBottom: '15px' }}
           >
             <Checkbox value="public">
@@ -126,7 +103,7 @@ const CreateProjectForm = () => {
                 placement="topLeft"
                 trigger="hover"
                 speaker={<Tooltip>All new users can read the files by default.</Tooltip>}
-                delayShow={300}
+                delayShow={360}
               >
                 <Toggle size="lg" checkedChildren="Read" unCheckedChildren="Read" defaultChecked />
               </Whisper>
@@ -134,7 +111,7 @@ const CreateProjectForm = () => {
                 placement="topLeft"
                 trigger="hover"
                 speaker={<Tooltip>All new users can write to files by default.</Tooltip>}
-                delayShow={300}
+                delayShow={360}
               >
                 <Toggle
                   size="lg"
@@ -149,7 +126,7 @@ const CreateProjectForm = () => {
                 speaker={
                   <Tooltip>All new users can create, change and remove files by default.</Tooltip>
                 }
-                delayShow={300}
+                delayShow={360}
               >
                 <Toggle size="lg" checkedChildren="Edit" unCheckedChildren="Edit" defaultChecked />
               </Whisper>
@@ -176,7 +153,7 @@ const CreateProjectForm = () => {
                 placement="topLeft"
                 trigger="hover"
                 speaker={<Tooltip>All new users can read the channels by default.</Tooltip>}
-                delayShow={300}
+                delayShow={360}
               >
                 <Toggle size="lg" checkedChildren="Read" unCheckedChildren="Read" defaultChecked />
               </Whisper>
@@ -184,7 +161,7 @@ const CreateProjectForm = () => {
                 placement="topLeft"
                 trigger="hover"
                 speaker={<Tooltip>All new users can write to channels by default.</Tooltip>}
-                delayShow={300}
+                delayShow={360}
               >
                 <Toggle
                   size="lg"
@@ -201,7 +178,7 @@ const CreateProjectForm = () => {
                     All new users can create, change and remove channels by default.
                   </Tooltip>
                 )}
-                delayShow={300}
+                delayShow={360}
               >
                 <Toggle size="lg" checkedChildren="Edit" unCheckedChildren="Edit" defaultChecked />
               </Whisper>
@@ -228,7 +205,7 @@ const CreateProjectForm = () => {
                 placement="topLeft"
                 trigger="hover"
                 speaker={<Tooltip>All new users can read the terminals by default.</Tooltip>}
-                delayShow={300}
+                delayShow={360}
               >
                 <Toggle size="lg" checkedChildren="Read" unCheckedChildren="Read" defaultChecked />
               </Whisper>
@@ -236,7 +213,7 @@ const CreateProjectForm = () => {
                 placement="topLeft"
                 trigger="hover"
                 speaker={<Tooltip>All new users can write to terminals by default.</Tooltip>}
-                delayShow={300}
+                delayShow={360}
               >
                 <Toggle
                   size="lg"
@@ -253,7 +230,7 @@ const CreateProjectForm = () => {
                     All new users can create, change and remove terminals by default.
                   </Tooltip>
                 )}
-                delayShow={300}
+                delayShow={360}
               >
                 <Toggle size="lg" checkedChildren="Edit" unCheckedChildren="Edit" defaultChecked />
               </Whisper>
