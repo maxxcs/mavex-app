@@ -1,3 +1,4 @@
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
@@ -6,16 +7,24 @@ const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
   mode,
-  entry: './src/index.jsx',
+  entry: path.resolve('./src/index.jsx'),
   output: {
-    path: `${__dirname}/public`,
+    path: path.resolve('./public'),
     filename: './app.js',
     globalObject: 'this',
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
     alias: {
-      modules: `${__dirname}/node_modules`,
+      '@modules': path.resolve('./node_modules'),
+      '@settings': path.resolve('./settings.json'),
+      '@config': path.resolve('./src/config'),
+      '@general': path.resolve('./src/general'),
+      '@home': path.resolve('./src/home'),
+      '@dashboard': path.resolve('./src/dashboard'),
+      '@workspace': path.resolve('./src/workspace'),
+      '@channels': path.resolve('./src/channels'),
+      '@terminals': path.resolve('./src/terminals')
     },
   },
   plugins: [
@@ -39,7 +48,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.wk\.js$/,
+        test: /\-worker\.js$/,
         exclude: '/node_modules/',
         use: [
           {

@@ -1,6 +1,7 @@
 import { Alert } from 'rsuite';
+import { BASE_URL } from '@settings';
 
-const client = new window.Primus('http://localhost:8000');
+const client = new window.Primus(`${BASE_URL}`);
 
 Alert.config({ duration: 3000 });
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import editorController from './editor-controller';
+import editorController from '@workspace/editor/controller';
 
 const Editor = () => {
   const editorRef = useRef();

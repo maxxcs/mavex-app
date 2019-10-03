@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Chat from './chat';
-import ChannelList from './channel-list';
+import Chat from './components/chat';
+import ChannelList from './components/channel-list';
 
 const Channels = () => (
   <>

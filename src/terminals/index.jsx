@@ -1,8 +1,8 @@
 import React from 'react';
 
-import TerminalScreen from './terminal-screen';
-import TerminalList from './terminal-list';
-import CreateTerminalForm from './create-terminal-form';
+import TerminalScreen from './components/terminal-screen';
+import TerminalList from './components/terminal-list';
+import CreateTerminalForm from './components/create-terminal-form';
 
 const Terminals = () => (
   <>

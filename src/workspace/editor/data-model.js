@@ -1,7 +1,7 @@
-import { KSeq, InsertOp, RemoveOp } from './crdt/index';
-import { Ident } from './crdt/idents/Ident';
+import { KSeq, InsertOp, RemoveOp } from './data/index';
+import { Ident } from './data/idents/Ident';
 
-export default class CrdtService {
+export default class DataModel {
   constructor(uniqueId, content, generator) {
     this.crdt = new KSeq(uniqueId, content, generator);
     // window.crdt = this.crdt;

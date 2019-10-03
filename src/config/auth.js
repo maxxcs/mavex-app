@@ -1,6 +1,6 @@
 import decoder from 'jwt-decode';
-import store from '../config/store';
-import { userAuthenticate, userLogout } from '../general/actions';
+import store from '@config/store';
+import { userAuthenticate, userLogout } from '@general/store/actions';
 
 const TOKEN_KEY = 'token';
 
@@ -22,4 +22,10 @@ export const isAuthenticated = () => {
     return true;
   }
   return false;
+};
+
+export const getToken = () => {
+  const token = localStorage.getItem(TOKEN_KEY);
+  if (token) return token;
+  else store.dispatch(userLogout());
 };

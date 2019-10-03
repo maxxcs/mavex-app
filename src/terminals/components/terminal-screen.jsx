@@ -25,7 +25,7 @@ const TerminalScreen = () => {
       id="terminal-screen"
       className="flex-column"
       onClick={handleClickContainer}
-      onKeyDown={() => {}}
+      onKeyDown={() => { }}
       role="presentation"
     >
       <div id="terminal-header" className="flex-row">
@@ -55,7 +55,7 @@ const TerminalScreen = () => {
             id="terminal-input"
             ref={inputRef}
             type="text"
-            autoFocus // eslint-disable-line jsx-a11y/no-autofocus
+            autoFocus
             autoComplete="off"
             spellCheck={false}
             value={command}

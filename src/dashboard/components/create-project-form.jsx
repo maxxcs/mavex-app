@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 import {
   Drawer,
   Divider,
@@ -11,19 +12,96 @@ import {
   InputGroup,
   Checkbox,
   Toggle,
+  Alert
 } from 'rsuite';
-import { displayProjectForm } from './actions';
+
+import { displayProjectForm, fetchProjects } from '@dashboard/store/actions';
+import { getToken } from '@config/auth';
+import { BASE_URL } from '@settings';
 
 const CreateProjectForm = () => {
   const display = useSelector(state => state.dashboard.displayProjectForm);
   const dispatch = useDispatch();
+
+  const [name, setName] = useState("");
+  const [isPublic, setIsPublic] = useState(false);
+  const [usersFilesRead, setUsersFilesRead] = useState(true);
+  const [usersFilesWrite, setUsersFilesWrite] = useState(true);
+  const [usersFilesEdit, setUsersFilesEdit] = useState(true);
+  const [usersChannelsRead, setUsersChannelsRead] = useState(true);
+  const [usersChannelsWrite, setUsersChannelsWrite] = useState(true);
+  const [usersChannelsEdit, setUsersChannelsEdit] = useState(true);
+  const [usersTerminalsRead, setUsersTerminalsRead] = useState(true);
+  const [usersTerminalsWrite, setUsersTerminalsWrite] = useState(true);
+  const [usersTerminalsEdit, setUsersTerminalsEdit] = useState(true);
+  const [busy, setBusy] = useState(false);
+
+  const clearForm = () => {
+    setName("");
+    setIsPublic(false);
+    setUsersFilesRead(true);
+    setUsersFilesWrite(true);
+    setUsersFilesEdit(true);
+    setUsersChannelsRead(true);
+    setUsersChannelsWrite(true);
+    setUsersChannelsEdit(true);
+    setUsersTerminalsRead(true);
+    setUsersTerminalsWrite(true);
+    setUsersTerminalsEdit(true);
+  };
+
+  const closeForm = () => {
+    clearForm();
+    dispatch(displayProjectForm(false));
+  };
+
+  const createProject = async (evt) => {
+    try {
+      if (evt) evt.preventDefault();
+      setBusy(true);
+      if (!name) {
+        setBusy(false);
+        Alert.warning('Name cannot be empty.');
+      } else {
+        const token = getToken();
+        const project = {
+          name,
+          isPublic,
+          usersFilesRead,
+          usersFilesWrite,
+          usersFilesEdit,
+          usersChannelsRead,
+          usersChannelsWrite,
+          usersChannelsEdit,
+          usersTerminalsRead,
+          usersTerminalsWrite,
+          usersTerminalsEdit
+        };
+        const { data } = await axios.post(`${BASE_URL}/dashboard/create-project`, { project, token });
+
+        if (data.created) {
+          dispatch(fetchProjects());
+          setBusy(false);
+          Alert.success('Project successfully created.');
+          closeForm();
+        } else {
+          setBusy(false);
+          Alert.warning('Something unexpected has occurred.');
+          throw new Error(data);
+        }
+      }
+    } catch ({ response }) {
+      setBusy(false);
+      if (response) Alert.warning(response.data.message);
+    }
+  };
 
   return (
     <Drawer
       placement="left"
       size="xs"
       show={display}
-      onHide={() => dispatch(displayProjectForm(false))}
+      onHide={() => closeForm()}
     >
       <Drawer.Header>
         <Drawer.Title>
@@ -48,7 +126,9 @@ const CreateProjectForm = () => {
                 type="text"
                 placeholder="Project name"
                 autoFocus
-                onPressEnter={() => dispatch(displayProjectForm(false))}
+                value={name}
+                onChange={value => setName(value)}
+                onPressEnter={() => createProject()}
               />
             </InputGroup>
             <Whisper
@@ -64,7 +144,7 @@ const CreateProjectForm = () => {
             className="flex-row"
             style={{ width: '230px', alignItems: 'center', marginBottom: '15px' }}
           >
-            <Checkbox value="public">
+            <Checkbox checked={isPublic} onChange={(val, checked) => setIsPublic(checked)}>
               {'Make this a '}
               <strong>public</strong>
               {' project.'}
@@ -105,7 +185,13 @@ const CreateProjectForm = () => {
                 speaker={<Tooltip>All new users can read the files by default.</Tooltip>}
                 delayShow={360}
               >
-                <Toggle size="lg" checkedChildren="Read" unCheckedChildren="Read" defaultChecked />
+                <Toggle
+                  size="lg"
+                  checkedChildren="Read"
+                  unCheckedChildren="Read"
+                  checked={usersFilesRead}
+                  onChange={value => setUsersFilesRead(value)}
+                />
               </Whisper>
               <Whisper
                 placement="topLeft"
@@ -117,7 +203,8 @@ const CreateProjectForm = () => {
                   size="lg"
                   checkedChildren="Write"
                   unCheckedChildren="Write"
-                  defaultChecked
+                  checked={usersFilesWrite}
+                  onChange={value => setUsersFilesWrite(value)}
                 />
               </Whisper>
               <Whisper
@@ -128,7 +215,13 @@ const CreateProjectForm = () => {
                 }
                 delayShow={360}
               >
-                <Toggle size="lg" checkedChildren="Edit" unCheckedChildren="Edit" defaultChecked />
+                <Toggle
+                  size="lg"
+                  checkedChildren="Edit"
+                  unCheckedChildren="Edit"
+                  checked={usersFilesEdit}
+                  onChange={value => setUsersFilesEdit(value)}
+                />
               </Whisper>
             </div>
           </div>
@@ -155,7 +248,13 @@ const CreateProjectForm = () => {
                 speaker={<Tooltip>All new users can read the channels by default.</Tooltip>}
                 delayShow={360}
               >
-                <Toggle size="lg" checkedChildren="Read" unCheckedChildren="Read" defaultChecked />
+                <Toggle
+                  size="lg"
+                  checkedChildren="Read"
+                  unCheckedChildren="Read"
+                  checked={usersChannelsRead}
+                  onChange={value => setUsersChannelsRead(value)}
+                />
               </Whisper>
               <Whisper
                 placement="topLeft"
@@ -167,7 +266,9 @@ const CreateProjectForm = () => {
                   size="lg"
                   checkedChildren="Write"
                   unCheckedChildren="Write"
-                  defaultChecked
+                  checked={usersChannelsWrite}
+                  onChange={value => setUsersChannelsWrite(value)}
+
                 />
               </Whisper>
               <Whisper
@@ -180,7 +281,13 @@ const CreateProjectForm = () => {
                 )}
                 delayShow={360}
               >
-                <Toggle size="lg" checkedChildren="Edit" unCheckedChildren="Edit" defaultChecked />
+                <Toggle
+                  size="lg"
+                  checkedChildren="Edit"
+                  unCheckedChildren="Edit"
+                  checked={usersChannelsEdit}
+                  onChange={value => setUsersChannelsEdit(value)}
+                />
               </Whisper>
             </div>
           </div>
@@ -207,7 +314,13 @@ const CreateProjectForm = () => {
                 speaker={<Tooltip>All new users can read the terminals by default.</Tooltip>}
                 delayShow={360}
               >
-                <Toggle size="lg" checkedChildren="Read" unCheckedChildren="Read" defaultChecked />
+                <Toggle
+                  size="lg"
+                  checkedChildren="Read"
+                  unCheckedChildren="Read"
+                  checked={usersTerminalsRead}
+                  onChange={value => setUsersTerminalsRead(value)}
+                />
               </Whisper>
               <Whisper
                 placement="topLeft"
@@ -219,7 +332,8 @@ const CreateProjectForm = () => {
                   size="lg"
                   checkedChildren="Write"
                   unCheckedChildren="Write"
-                  defaultChecked
+                  checked={usersTerminalsWrite}
+                  onChange={value => setUsersTerminalsWrite(value)}
                 />
               </Whisper>
               <Whisper
@@ -232,17 +346,23 @@ const CreateProjectForm = () => {
                 )}
                 delayShow={360}
               >
-                <Toggle size="lg" checkedChildren="Edit" unCheckedChildren="Edit" defaultChecked />
+                <Toggle
+                  size="lg"
+                  checkedChildren="Edit"
+                  unCheckedChildren="Edit"
+                  checked={usersTerminalsEdit}
+                  onChange={value => setUsersTerminalsEdit(value)}
+                />
               </Whisper>
             </div>
           </div>
         </div>
       </Drawer.Body>
       <Drawer.Footer>
-        <Button onClick={() => dispatch(displayProjectForm(false))} appearance="primary">
+        <Button onClick={() => createProject()} appearance="primary" type="submit" loading={busy}>
           Submit
         </Button>
-        <Button onClick={() => dispatch(displayProjectForm(false))} appearance="subtle">
+        <Button onClick={() => closeForm()} appearance="subtle">
           Cancel
         </Button>
       </Drawer.Footer>

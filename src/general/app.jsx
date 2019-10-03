@@ -5,8 +5,8 @@ import {
   Container, Header, Content, Footer,
 } from 'rsuite';
 
-import store from '../config/store';
-import '../config/client';
+import store from '@config/store';
+import '@config/client';
 import './main.less';
 
 import HeaderCointainer from './header/header';

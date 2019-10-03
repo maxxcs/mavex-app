@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import { isAuthenticated } from '../config/auth';
+import { isAuthenticated } from '@config/auth';
 
-import Login from './login';
-import Register from './register';
+import Login from './components/login';
+import Register from './components/register';
 
 const Home = ({ history }) => {
   if (isAuthenticated()) {

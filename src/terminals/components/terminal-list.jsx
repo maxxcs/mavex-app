@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Button, Divider } from 'rsuite';
-import { displayTerminalForm } from './actions';
+import { displayTerminalForm } from '@terminals/store/actions';
 
 import TerminalInstance from './terminal-instance';
 

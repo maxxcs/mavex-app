@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-globals */
 self.onmessage = ({ data }) => {
   const changes = data;
   for (let i = 0; i < changes.length; i += 1) {

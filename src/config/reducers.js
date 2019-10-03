@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import general from '../general/reducer';
-import dashboard from '../dashboard/reducer';
-import workspace from '../workspace/reducer';
-import channels from '../channels/reducer';
-import terminals from '../terminals/reducer';
+import general from '@general/store/reducer';
+import dashboard from '@dashboard/store/reducer';
+import workspace from '@workspace/store/reducer';
+import channels from '@channels/store/reducer';
+import terminals from '@terminals/store/reducer';
 
 const reducers = combineReducers({
   general,

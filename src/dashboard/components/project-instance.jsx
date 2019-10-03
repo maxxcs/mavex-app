@@ -3,7 +3,7 @@ import {
   Icon, Whisper, Tooltip, Alert,
 } from 'rsuite';
 
-const ProjectInstance = ({ id, actualId, name }) => {
+const ProjectInstance = ({ id, actualId, name, isPublic }) => {
   const isActual = () => (id === actualId ? '#4179a8' : '#CCC');
 
   return (
@@ -55,7 +55,17 @@ const ProjectInstance = ({ id, actualId, name }) => {
           </Whisper>
         </div>
       </div>
-      <div className="flex-row center full center-alt" />
+      {
+        (isPublic)
+          ?
+          <div className="flex-row center full instance-item-public-menu">
+            <Icon icon="group" style={{ fontSize: 12, marginRight: 5 }} />
+            <span style={{ fontSize: 12 }}>Public project</span>
+          </div>
+          :
+          null
+      }
+
     </div>
   );
 };

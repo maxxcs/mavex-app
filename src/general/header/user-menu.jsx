@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Dropdown, Icon, Alert } from 'rsuite';
-import { logout } from '../../config/auth';
+import { logout } from '@config/auth';
 
 const UserMenu = ({ username, history }) => {
   const exit = () => {

@@ -48,7 +48,7 @@ const Register = ({ changeDisplay }) => {
         }
       }
     } catch ({ response }) {
-      Alert.warning(response.data.message);
+      if (response) Alert.warning(response.data.message);
       setBusy(false);
     }
   };

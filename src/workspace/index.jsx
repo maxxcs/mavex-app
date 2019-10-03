@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Editor from './editor';
-import FileTree from './file-tree';
-import FileTabs from './file-tabs';
+import Editor from './components/editor';
+import FileTree from './components/file-tree';
+import FileTabs from './components/file-tabs';
 
 const Workspace = () => (
   <>

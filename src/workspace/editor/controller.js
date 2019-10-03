@@ -1,7 +1,7 @@
-import * as monaco from 'monaco-editor'; // eslint-disable-line import/no-unresolved
-import client from '../config/client';
-import CrdtService from './crdt-service';
-import MonacoAdapterWorker from './workers/monaco-adapter.wk';
+import * as monaco from 'monaco-editor';
+import client from '@config/client';
+import DataModel from './data-model';
+import AdapterWorker from './adapter-worker';
 
 function editorController(editorRef) {
   const editor = monaco.editor.create(editorRef.current, {
@@ -12,8 +12,8 @@ function editorController(editorRef) {
     automaticLayout: true,
   });
   const model = editor.getModel();
-  const storage = new CrdtService(Date.now().toString());
-  const adapter = new MonacoAdapterWorker();
+  const storage = new DataModel(Date.now().toString());
+  const adapter = new AdapterWorker();
   let preventEmit = false;
 
   model.onDidChangeContent((evt) => {

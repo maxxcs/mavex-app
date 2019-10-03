@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   Modal, Button, Input, InputGroup, Icon,
 } from 'rsuite';
-import { displayTerminalForm } from './actions';
+import { displayTerminalForm } from '@terminals/store/actions';
 
 const CreateTerminalForm = () => {
   const display = useSelector(state => state.terminals.displayTerminalForm);

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import { login } from '../config/auth';
+import axios from 'axios';
 import {
   InputGroup, Input, Button, Divider, Alert,
 } from 'rsuite';
+
+import { login } from '@config/auth';
+import { BASE_URL } from '@settings';
+
 
 const Login = ({ changeDisplay, history }) => {
   const [username, setUsername] = useState('');
@@ -30,7 +33,7 @@ const Login = ({ changeDisplay, history }) => {
         setBusy(false);
         Alert.warning('Login or password cannot be empty.');
       } else {
-        const { data } = await axios.post('http://localhost:8000/login', { username, password });
+        const { data } = await axios.post(`${BASE_URL}/login`, { username, password });
         if (data.token) {
           setBusy(false);
           Alert.success('Signed in successfully.');
@@ -43,7 +46,7 @@ const Login = ({ changeDisplay, history }) => {
       }
     } catch ({ response }) {
       setBusy(false);
-      Alert.warning(response.data.message);
+      if (response) Alert.warning(response.data.message);
       setPassword('');
     }
   };

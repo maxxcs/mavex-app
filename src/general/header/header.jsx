@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Icon } from 'rsuite';
-import { isAuthenticated } from '../../config/auth';
+import { isAuthenticated } from '@config/auth';
 
 import UserMenu from './user-menu';
 import ProjectMenu from './project-menu';
