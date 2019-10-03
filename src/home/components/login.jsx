@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import {
   InputGroup, Input, Button, Divider, Alert,
@@ -9,7 +9,8 @@ import { login } from '@config/auth';
 import { BASE_URL } from '@settings';
 
 
-const Login = ({ changeDisplay, history }) => {
+const Login = ({ changeDisplay }) => {
+  const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
@@ -108,4 +109,4 @@ const Login = ({ changeDisplay, history }) => {
   );
 };
 
-export default withRouter(Login);
+export default Login;

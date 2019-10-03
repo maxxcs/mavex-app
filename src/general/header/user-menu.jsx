@@ -1,9 +1,11 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Dropdown, Icon, Alert } from 'rsuite';
 import { logout } from '@config/auth';
 
-const UserMenu = ({ username, history }) => {
+const UserMenu = ({ username }) => {
+  const history = useHistory();
+
   const exit = () => {
     logout();
     history.push('/');
@@ -38,4 +40,4 @@ const UserMenu = ({ username, history }) => {
   );
 }
 
-export default withRouter(UserMenu);
+export default UserMenu;

@@ -4,6 +4,7 @@ import {
 } from 'rsuite';
 
 const ProjectInstance = ({ id, actualId, name, isPublic }) => {
+  console.log({ id, actualId, name, isPublic });
   const isActual = () => (id === actualId ? '#4179a8' : '#CCC');
 
   return (

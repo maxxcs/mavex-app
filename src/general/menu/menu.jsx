@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Sidebar, Sidenav, Nav, Icon } from 'rsuite';
 
-const Menu = ({ history, location }) => {
+const Menu = () => {
+  const history = useHistory();
+  const location = useLocation();
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
@@ -63,4 +65,4 @@ const Menu = ({ history, location }) => {
   );
 };
 
-export default withRouter(Menu);
+export default Menu;

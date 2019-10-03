@@ -1,12 +1,13 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Icon } from 'rsuite';
 import { isAuthenticated } from '@config/auth';
 
 import UserMenu from './user-menu';
 import ProjectMenu from './project-menu';
 
-const HeaderCointainer = ({ history }) => {
+const HeaderCointainer = () => {
+  const history = useHistory();
   const renderProjectMenu = () => (isAuthenticated() ? <ProjectMenu projectName="engine-awesome" /> : null);
   const renderUserMenu = () => (isAuthenticated() ? <UserMenu username="Fulano" /> : null);
 
@@ -22,4 +23,4 @@ const HeaderCointainer = ({ history }) => {
   );
 };
 
-export default withRouter(HeaderCointainer);
+export default HeaderCointainer;
