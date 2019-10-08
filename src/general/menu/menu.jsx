@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-import { Sidebar, Sidenav, Nav, Icon } from 'rsuite';
+import { Sidebar, Sidenav, Nav, Icon, Alert } from 'rsuite';
 
 const Menu = () => {
+  const user = useSelector(state => state.general.user);
+  const project = useSelector(state => state.general.project);
   const history = useHistory();
   const location = useLocation();
   const [selected, setSelected] = useState(null);
@@ -12,7 +15,14 @@ const Menu = () => {
   });
 
   const handleRoute = (route) => {
-    history.push(route);
+    if (!user) {
+      Alert.warning('Login before to access');
+    }
+    if (!project && (route === '/workspace' || route === '/channels' || route === '/terminals')) {
+      Alert.warning('You must be in a project');
+    } else {
+      history.push(route);
+    }
   };
 
   return (

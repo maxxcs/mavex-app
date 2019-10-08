@@ -3,17 +3,21 @@ import {
   Icon, Whisper, Tooltip, Alert,
 } from 'rsuite';
 
-const ProjectInstance = ({ id, actualId, name, isPublic }) => {
-  console.log({ id, actualId, name, isPublic });
-  const isActual = () => (id === actualId ? '#4179a8' : '#CCC');
+const ProjectInstance = ({ project, actual }) => {
+
+  const joinProject = () => {
+    console.log(project);
+  };
+
+  const isActual = () => (project._id === actual ? '#4179a8' : '#CCC');
 
   return (
     <div className="flex-column project-instance instance-item">
       <div className="flex-row full center-alt">
         <div className="project-instance-title" style={{ color: isActual() }}>
-          <button type="button" onClick={() => Alert.info('Changing project... or not.')}>
+          <button type="button" onClick={() => joinProject()}>
             <Icon icon="folder" style={{ fontSize: 18, marginRight: 5 }} />
-            <strong>{name}</strong>
+            <strong>{project.name}</strong>
           </button>
         </div>
         <div className="flex-row project-instance-menu">
@@ -57,7 +61,7 @@ const ProjectInstance = ({ id, actualId, name, isPublic }) => {
         </div>
       </div>
       {
-        (isPublic)
+        (project.isPublic)
           ?
           <div className="flex-row center full instance-item-public-menu">
             <Icon icon="group" style={{ fontSize: 12, marginRight: 5 }} />

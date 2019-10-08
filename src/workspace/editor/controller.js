@@ -3,18 +3,19 @@ import client from '@config/client';
 import DataModel from './data-model';
 import AdapterWorker from './adapter-worker';
 
-function editorController(editorRef) {
-  const editor = monaco.editor.create(editorRef.current, {
-    value: '',
-    language: 'javascript',
-    theme: 'vs-dark',
-    renderFinalNewline: true,
-    automaticLayout: true,
-  });
+function editorController(editorRef, settings, user) {
+  const editor = monaco.editor.create(editorRef.current, settings);
   const model = editor.getModel();
-  const storage = new DataModel(Date.now().toString());
+  const storage = new DataModel(user.id);
   const adapter = new AdapterWorker();
   let preventEmit = false;
+
+  editor.onDidDispose(() => {
+    model.dispose();
+    adapter.terminate();
+    client.removeListener('file:userWrite');
+    client.removeListener('file:data');
+  });
 
   model.onDidChangeContent((evt) => {
     if (preventEmit) return;
@@ -25,14 +26,14 @@ function editorController(editorRef) {
 
   adapter.onmessage = ({ data }) => {
     const op = storage.executeChange(data);
-    client.emit('editor:broadcastOperation', op);
+    client.emit('file:write', op);
   };
 
-  client.on('server:executeOperation', (raw) => {
-    const { char, index } = storage.executeOperation(raw.op);
+  client.on('file:userWrite', data => {
+    const { char, index } = storage.executeOperation(data.op);
     const { lineNumber, column } = model.getPositionAt(index);
     let range;
-    switch (raw.type) {
+    switch (data.type) {
       case 1:
         console.log('INSERT', index);
         range = new monaco.Range(lineNumber, column, lineNumber, column);
@@ -46,9 +47,9 @@ function editorController(editorRef) {
         range = new monaco.Range(lineNumber, column, lineNumber + 1, column);
         break;
       default:
-        console.log('ERROR');
+        return;
     }
-    console.log(range);
+    // console.log(range);
     preventEmit = true;
     model.applyEdits([
       {
@@ -61,7 +62,7 @@ function editorController(editorRef) {
     editor.focus();
   });
 
-  client.on('server:sendFileContent', (data) => {
+  client.on('file:data', (data) => {
     try {
       preventEmit = true;
       model.setValue(data);
@@ -69,13 +70,6 @@ function editorController(editorRef) {
       preventEmit = false;
       editor.focus();
     }
-  });
-
-  editor.onDidDispose(() => {
-    model.dispose();
-    adapter.terminate();
-    client.removeListener('server:executeOperation');
-    client.removeListener('server:sendFileContent');
   });
 
   if (!model.isDisposed()) {

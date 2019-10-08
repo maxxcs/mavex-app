@@ -26,11 +26,9 @@ const ProjectList = () => {
         <div className="scrollable-child" style={{ height: '100%', overflow: 'auto' }}>
           {
             projects.map(project => <ProjectInstance
-              id={project._id}
               key={project._id}
-              actualId="343242"
-              name={project.name}
-              isPublic={project.isPublic}
+              project={project}
+              actual="343242"
             />)
           }
         </div>

@@ -1,13 +1,22 @@
 import React, { useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import editorController from '@workspace/editor/controller';
 
 const Editor = () => {
+  const user = useSelector(state => state.general.user);
   const editorRef = useRef();
+  const settings = {
+    value: '',
+    language: 'javascript',
+    theme: 'vs-dark',
+    renderFinalNewline: true,
+    automaticLayout: true,
+  };
   let editor = null;
 
   useEffect(() => {
     if (editorRef.current) {
-      editor = editorController(editorRef);
+      editor = editorController(editorRef, settings, user);
     }
     return () => {
       editor.dispose();

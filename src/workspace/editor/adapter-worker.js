@@ -3,13 +3,13 @@ self.onmessage = ({ data }) => {
   for (let i = 0; i < changes.length; i += 1) {
     const change = changes[i];
     // console.log(change);
-    console.log({
-      text: change.text,
-      startLineNumber: change.range.startLineNumber,
-      startColumn: change.range.startColumn,
-      endLineNumber: change.range.endLineNumber,
-      endColumn: change.range.endColumn,
-    });
+    // console.log({
+    //   text: change.text,
+    //   startLineNumber: change.range.startLineNumber,
+    //   startColumn: change.range.startColumn,
+    //   endLineNumber: change.range.endLineNumber,
+    //   endColumn: change.range.endColumn,
+    // });
     if (change.rangeLength > 0) {
       // console.log('handle deletion or pre-selection');
       // console.log(change);
