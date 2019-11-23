@@ -1,26 +1,25 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Divider } from 'rsuite';
-import { showCreateProjectModal } from '@dashboard/store/actions';
 
 import ProjectInstance from './project-instance';
 
 const ProjectList = () => {
   const dispatch = useDispatch();
-  const projects = useSelector(state => state.dashboard.projects);
+  // const projects = useSelector(state => state.dashboard.projects);
 
   return (
-    <div className="flex-column full project-list">
+    <div id="project-list" className="flex-column full">
       <div>
         <Button
-          className="create-project-btn"
+          id="create-project-btn"
           appearance="default"
           block
           onClick={() => dispatch(showCreateProjectModal(true))}
         >
           New Project
         </Button>
-        <Divider className="project-list-divider" />
+        <Divider id="project-list-divider" />
       </div>
       <div className="scrollable-parent full">
         <div className="scrollable-child" style={{ height: '100%', overflow: 'auto' }}>

@@ -15,12 +15,12 @@ import {
   Alert
 } from 'rsuite';
 
-import { displayProjectForm, fetchProjects } from '@dashboard/store/actions';
+import { showCreateProjectModal, fetchProjects } from '@dashboard/store/actions';
 import { getToken } from '@config/auth';
 import { BASE_URL } from '@settings';
 
 const CreateProjectForm = () => {
-  const display = useSelector(state => state.dashboard.displayProjectForm);
+  const display = useSelector(state => state.dashboard.displayModal.createProject);
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
@@ -52,7 +52,7 @@ const CreateProjectForm = () => {
 
   const closeForm = () => {
     clearForm();
-    dispatch(displayProjectForm(false));
+    dispatch(showCreateProjectModal(false));
   };
 
   const createProject = async (evt) => {

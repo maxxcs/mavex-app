@@ -2,29 +2,31 @@ import React, { useState } from 'react';
 import { Treebeard } from 'react-treebeard';
 
 const files = {
-  name: 'root',
+  name: 'project',
   toggled: true,
   children: [
     {
-      name: 'parent',
+      name: 'src',
       children: [
-        { name: 'child1' },
-        { name: 'child2' }
+        { name: 'index.js' },
+        { name: 'app.js' }
       ]
     },
     {
-      name: 'loading parent',
+      name: 'async',
       loading: true,
-      children: []
+      children: [
+        { name: 'multi.js' }
+      ]
     },
     {
-      name: 'parent',
+      name: 'public',
       children: [
         {
-          name: 'nested parent',
+          name: 'static',
           children: [
-            { name: 'nested child 1' },
-            { name: 'nested child 2' }
+            { name: 'index.html' },
+            { name: 'main.css' }
           ]
         }
       ]
@@ -53,7 +55,9 @@ const FileTree = () => {
       node.toggled = toggled;
     }
     setCursor(node);
-    setData(Object.assign({}, data))
+    setData(Object.assign({}, data));
+    console.log(node);
+    // console.log(data);
   }
 
   return (

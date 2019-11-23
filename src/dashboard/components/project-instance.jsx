@@ -1,12 +1,17 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import {
   Icon, Whisper, Tooltip, Alert,
 } from 'rsuite';
 
-const ProjectInstance = ({ project, actual }) => {
+import { showShareProjectModal, showConfigProjectModal, showRemoveProjectModal } from '@dashboard/store/actions';
+import { joinProject } from '@general/store/actions'
 
-  const joinProject = () => {
-    console.log(project);
+const ProjectInstance = ({ project, actual }) => {
+  const dispatch = useDispatch();
+
+  const openProject = () => {
+    dispatch(joinProject(project._id));
   };
 
   const isActual = () => (project._id === actual ? '#4179a8' : '#CCC');
@@ -15,7 +20,7 @@ const ProjectInstance = ({ project, actual }) => {
     <div className="flex-column project-instance instance-item">
       <div className="flex-row full center-alt">
         <div className="project-instance-title" style={{ color: isActual() }}>
-          <button type="button" onClick={() => joinProject()}>
+          <button type="button" onClick={() => openProject()}>
             <Icon icon="folder" style={{ fontSize: 18, marginRight: 5 }} />
             <strong>{project.name}</strong>
           </button>
@@ -25,7 +30,7 @@ const ProjectInstance = ({ project, actual }) => {
             <button
               type="button"
               className="highlight"
-              onClick={() => Alert.success('So much invitation, very collaborative!')}
+              onClick={() => dispatch(showShareProjectModal(true))}
             >
               <Icon icon="send-o" style={{ fontSize: 18 }} />
             </button>
@@ -39,7 +44,7 @@ const ProjectInstance = ({ project, actual }) => {
             <button
               type="button"
               className="highlight"
-              onClick={() => Alert.warning('So much edition, very hackable!')}
+              onClick={() => dispatch(showConfigProjectModal(true))}
             >
               <Icon icon="edit" style={{ fontSize: 18 }} />
             </button>
@@ -53,7 +58,7 @@ const ProjectInstance = ({ project, actual }) => {
             <button
               type="button"
               className="highlight"
-              onClick={() => Alert.error('So much deletion, very erasable!')}
+              onClick={() => dispatch(showRemoveProjectModal(true))}
             >
               <Icon icon="trash2" style={{ fontSize: 18 }} />
             </button>

@@ -1,10 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Dropdown, Icon, Alert } from 'rsuite';
 import { logout } from '@config/auth';
 
-const UserMenu = ({ username }) => {
+const UserMenu = () => {
   const history = useHistory();
+  const user = useSelector(state => state.general.user);
 
   const exit = () => {
     logout();
@@ -18,14 +20,14 @@ const UserMenu = ({ username }) => {
         <Icon icon="bell-o" style={{ marginRight: '2px', color: '#8e8e93', fontSize: '15px' }} />
       </button>
       <Dropdown
-        title={username}
+        title={user.username}
         placement="bottomEnd"
         icon={<Icon icon="user" style={{ fontSize: '15px' }} />}
       >
         <Dropdown.Item panel style={{ padding: 10, width: 160 }}>
           <span>
             {'Signed in as '}
-            <strong>{username}</strong>
+            <strong>{user.username}</strong>
           </span>
         </Dropdown.Item>
         <Dropdown.Item divider />

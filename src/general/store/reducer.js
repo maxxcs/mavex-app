@@ -9,6 +9,11 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, user: { ...action.payload } };
     case 'USER_LOGOUT':
       return { ...state, user: null };
+    case 'JOIN_PROJECT':
+      return {
+        ...state,
+        project: action.payload
+      };
     default:
       return state;
   }

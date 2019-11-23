@@ -20,6 +20,7 @@ const Menu = () => {
     }
     if (!project && (route === '/workspace' || route === '/channels' || route === '/terminals')) {
       Alert.warning('You must be in a project');
+      return;
     } else {
       history.push(route);
     }

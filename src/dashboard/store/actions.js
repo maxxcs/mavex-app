@@ -2,8 +2,23 @@ import axios from 'axios';
 import { getToken } from '@config/auth';
 import { BASE_URL } from '@settings';
 
-export const displayProjectForm = display => ({
-  type: 'TOGGLE_PROJECT_FORM',
+export const showCreateProjectModal = display => ({
+  type: 'TOGGLE_CREATE_PROJECT_MODAL',
+  payload: display,
+});
+
+export const showShareProjectModal = display => ({
+  type: 'TOGGLE_SHARE_PROJECT_MODAL',
+  payload: display,
+});
+
+export const showConfigProjectModal = display => ({
+  type: 'TOGGLE_CONFIG_PROJECT_MODAL',
+  payload: display,
+});
+
+export const showRemoveProjectModal = display => ({
+  type: 'TOGGLE_REMOVE_PROJECT_MODAL',
   payload: display,
 });
 

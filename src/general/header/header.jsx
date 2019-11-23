@@ -8,8 +8,8 @@ import ProjectMenu from './project-menu';
 
 const HeaderCointainer = () => {
   const history = useHistory();
-  const renderProjectMenu = () => (isAuthenticated() ? <ProjectMenu projectName="engine-awesome" /> : null);
-  const renderUserMenu = () => (isAuthenticated() ? <UserMenu username="Fulano" /> : null);
+  const renderProjectMenu = () => (isAuthenticated() ? <ProjectMenu /> : null);
+  const renderUserMenu = () => (isAuthenticated() ? <UserMenu /> : null);
 
   return (
     <div id="header" className="flex-row full center">
