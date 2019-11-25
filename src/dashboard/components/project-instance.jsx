@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
   Icon, Whisper, Tooltip, Alert,
 } from 'rsuite';
@@ -8,10 +9,12 @@ import { showShareProjectModal, showConfigProjectModal, showRemoveProjectModal }
 import { joinProject } from '@general/store/actions'
 
 const ProjectInstance = ({ project, actual }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const openProject = () => {
     dispatch(joinProject(project._id));
+    history.push('/workspace');
   };
 
   const isActual = () => (project._id === actual ? '#4179a8' : '#CCC');

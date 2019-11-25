@@ -3,7 +3,7 @@ import React from 'react';
 import Tab from './tab';
 
 const FileTabs = () => (
-  <div id="file-tabs" className="flex-row full">
+  <div className="flex-row full file-tabs-container">
     <Tab fileId="1" actualId="2" filename="app.cpp" />
     <Tab fileId="2" actualId="2" filename="routes.js" />
     <Tab fileId="3" actualId="2" filename="index.py" />

@@ -7,13 +7,13 @@ const client = new window.Primus(`${BASE_URL}`);
 Alert.config({ duration: 3000 });
 
 client.on('server:broadcast', (data) => {
-  Alert.info(data);
+  // Alert.info(data);
 });
 
 // --------------------------------------------------------
 
 client.on('project:userJoined', async data => {
-
+  Alert.info(`User ${data.username} has joined the collaborative session.`);
 });
 
 client.on('project:userLeft', async data => {

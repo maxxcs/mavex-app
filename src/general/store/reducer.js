@@ -8,7 +8,7 @@ export default (state = INITIAL_STATE, action) => {
     case 'USER_AUTHENTICATE':
       return { ...state, user: { ...action.payload } };
     case 'USER_LOGOUT':
-      return { ...state, user: null };
+      return { ...state, user: null, project: null };
     case 'JOIN_PROJECT':
       return {
         ...state,
