@@ -65,7 +65,7 @@ const FileTree = () => {
   return (
     <>
       <div className="flex-column full file-tree">
-        <div className="flex-row file-tree-actions" style={{ backgroundColor: "#202020" }}>
+        <div className="flex-row file-tree-actions" style={{ backgroundColor: "#222" }}>
           <Button appearance="subtle" onClick={() => handleActionModal()}>
             <span style={{ margin: '0px 3px' }}>
               <Icon icon="file" />
@@ -87,7 +87,7 @@ const FileTree = () => {
         </div>
         <Treebeard data={data} onToggle={onToggle} style={style} />
       </div>
-      <ActionModal type="file" actualNode={cursor} />
+      <ActionModal type="file" actualNode={cursor} projectId={(project) ? project._id : null} />
     </>
   )
 }

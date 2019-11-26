@@ -24,4 +24,9 @@ export const joinProject = (projectId) => async (dispatch, getState) => {
   } catch (err) {
     throw new Error(err);
   }
-}
+};
+
+export const updateProjectFiles = files => ({
+  type: 'UPDATE_PROJECT_FILES',
+  payload: files
+});

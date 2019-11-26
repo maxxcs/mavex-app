@@ -35,32 +35,3 @@ export function setPropByPath(object, path, value) {
 
   return object;
 }
-
-const files = {
-  name: 'project',
-  toggled: true,
-  children: [
-    {
-      name: 'src',
-      id: '56d4a6d5as4d56as4a65d4a',
-      children: [
-        { name: 'index.js', id: "56d4a6d5as4dcv76b65vc8" },
-        { name: 'app.js', id: "56d4a6d5as4dcv76b65vc8" }
-      ]
-    },
-    {
-      name: 'public',
-      id: "56d4a6d5as4dcv76b65vc8",
-      children: [
-        {
-          name: 'static',
-          id: "56d4a6d5as4dcv76b65vc8",
-          children: [
-            { name: 'index.html', id: "56d4a6d5as4dcv76b65vc8" },
-            { name: 'main.css', id: "56d4a6d5as4dcv76b65vc8" }
-          ]
-        }
-      ]
-    }
-  ]
-};

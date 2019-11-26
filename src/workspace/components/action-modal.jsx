@@ -3,15 +3,21 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   Modal, Button, Input, InputGroup, Icon,
 } from 'rsuite';
-import { showActionModal } from '@workspace/store/actions';
 
-const ActionForm = ({ type, actualNode }) => {
+import client from '@config/client';
+import { getToken } from '@config/auth';
+import { showActionModal, addFile } from '@workspace/store/actions';
+
+const ActionForm = ({ type, actualNode, projectId }) => {
   const dispatch = useDispatch();
   const display = useSelector(state => state.workspace.displayActionModal);
-  const [input, setInput] = useState('');
+  const [filename, setFilename] = useState('');
 
   const handleSubmit = () => {
-    console.log(type, input, actualNode);
+    console.log(type, filename, actualNode);
+    const token = getToken();
+    client.emit('file:create', { token, filename, actualNode, projectId });
+    setFilename('');
     dispatch(showActionModal(false));
   };
 
@@ -28,11 +34,11 @@ const ActionForm = ({ type, actualNode }) => {
             <Icon icon="file" style={{ color: '#888' }} />
           </InputGroup.Addon>
           <Input
-            placeholder="Type a filename"
+            placeholder="Filename"
             type="text"
             autoFocus
-            value={input}
-            onChange={value => setInput(value)}
+            value={filename}
+            onChange={value => setFilename(value)}
             onPressEnter={() => handleSubmit()}
           />
         </InputGroup>
