@@ -6,7 +6,7 @@ import {
 
 import client from '@config/client';
 import { getToken } from '@config/auth';
-import { showActionModal, addFile } from '@workspace/store/actions';
+import { showActionModal } from '@workspace/store/actions';
 
 const ActionForm = ({ type, actualNode, projectId }) => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const ActionForm = ({ type, actualNode, projectId }) => {
   const handleSubmit = () => {
     console.log(type, filename, actualNode);
     const token = getToken();
-    client.emit('file:create', { token, filename, actualNode, projectId });
+    client.emit('file:create', { type, token, filename, actualNode, projectId });
     setFilename('');
     dispatch(showActionModal(false));
   };

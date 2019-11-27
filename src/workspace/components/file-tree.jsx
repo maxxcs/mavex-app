@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Treebeard } from 'react-treebeard';
 import { Button, Icon } from 'rsuite';
-import { showActionModal } from '@workspace/store/actions';
+import { showActionModal, openFile } from '@workspace/store/actions';
 
 import ActionModal from './action-modal';
 
@@ -26,23 +26,21 @@ const FileTree = () => {
       setData({
         name: project.name,
         toggled: true,
-        id: "56d4a2344as4dcv76b6cxz4",
-        children: [
-          {
-            name: 'index.js',
-            id: "56d4a6d5as4dcv76b65vc8",
-            parent: "56d4a2344as4dcv76b6cxz4"
-          },
-          {
-            name: 'app.js',
-            id: "56d4a6d5as4dcv76b65v23434234",
-            parent: "56d4a2344as4dcv76b6cxz4"
-          }
-        ]
+        id: project._id,
+        kind: 'folder',
+        children: handleFileStructure(project.files)
       });
     }
   }, [project]);
 
+  const handleFileStructure = files => {
+    return files.map(file => ({
+      name: file.filename,
+      kind: file.kind,
+      id: file._id,
+      parent: file.parent
+    }));
+  }
 
   const onToggle = (node, toggled) => {
     if (cursor) {
@@ -55,7 +53,7 @@ const FileTree = () => {
     setCursor(node);
     setData(Object.assign({}, data));
     console.log(node);
-    // console.log(data);
+    dispatch(openFile(project._id, node));
   };
 
   const handleActionModal = () => {

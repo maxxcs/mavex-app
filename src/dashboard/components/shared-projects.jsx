@@ -4,31 +4,31 @@ import { Button, Divider } from 'rsuite';
 
 import ProjectInstance from './project-instance';
 
-const ProjectList = () => {
+const SharedProjects = () => {
   const dispatch = useDispatch();
   // const projects = useSelector(state => state.dashboard.projects);
 
   return (
-    <div id="project-list" className="flex-column full">
+    <div className="flex-column full project-list">
       <div>
         <Button
-          id="create-project-btn"
+          className="check-invites-btn"
           appearance="default"
           block
-          onClick={() => dispatch(showCreateProjectModal(true))}
+          onClick={() => { }}
         >
-          New Project
+          Check Invites
         </Button>
-        <Divider id="project-list-divider" />
+        <Divider className="project-list-divider">Shared Projects</Divider>
       </div>
       <div className="scrollable-parent full">
         <div className="scrollable-child" style={{ height: '100%', overflow: 'auto' }}>
           {
-            projects.map(project => <ProjectInstance
-              key={project._id}
-              project={project}
-              actual="343242"
-            />)
+            // projects.map(project => <ProjectInstance
+            //   key={project._id}
+            //   project={project}
+            //   actual="343242"
+            // />)
           }
         </div>
       </div>
@@ -36,4 +36,4 @@ const ProjectList = () => {
   );
 };
 
-export default ProjectList;
+export default SharedProjects;

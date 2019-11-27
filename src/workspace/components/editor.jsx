@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import editorController from '@workspace/editor/controller';
 
 const Editor = () => {
+  let editor = null;
   const user = useSelector(state => state.general.user);
   const editorRef = useRef();
   const settings = {
@@ -12,7 +13,6 @@ const Editor = () => {
     renderFinalNewline: true,
     automaticLayout: true,
   };
-  let editor = null;
 
   useEffect(() => {
     if (editorRef.current) {

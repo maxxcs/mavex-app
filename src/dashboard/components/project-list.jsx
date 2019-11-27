@@ -20,7 +20,7 @@ const ProjectList = () => {
         >
           New Project
         </Button>
-        <Divider className="project-list-divider" />
+        <Divider className="project-list-divider">My Projects</Divider>
       </div>
       <div className="scrollable-parent full">
         <div className="scrollable-child" style={{ height: '100%', overflow: 'auto' }}>

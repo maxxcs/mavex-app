@@ -5,7 +5,8 @@ const INITIAL_STATE = {
     configProject: false,
     removeProject: false,
   },
-  projects: []
+  projects: [],
+  publicProjects: []
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -13,7 +14,8 @@ export default (state = INITIAL_STATE, action) => {
     case 'FETCH_PROJECTS':
       return {
         ...state,
-        projects: action.payload
+        projects: action.payload.projects,
+        publicProjects: action.payload.publicProjects
       };
     case 'TOGGLE_CREATE_PROJECT_MODAL':
       return {

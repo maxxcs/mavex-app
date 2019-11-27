@@ -8,14 +8,13 @@ export const showActionModal = display => ({
   payload: display
 });
 
-export const addFile = () => async (dispatch, getState) => {
+export const openFile = (projectId, file) => async (dispatch, getState) => {
   try {
     const token = getToken();
-    //client.emit('file:create');
-
+    client.emit('file:open', { projectId, file, token });
     dispatch({
-      type: 'CREATE_FILE',
-      payload: null
+      type: 'OPEN_FILE',
+      payload: file
     });
   } catch (err) {
     throw new Error(err);

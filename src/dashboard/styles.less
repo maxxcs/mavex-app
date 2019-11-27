@@ -1,5 +1,5 @@
 .project-list {
-  width: 500px;
+  min-width: 300px;
   background-color: #252525;
   padding: 10px 10px 0px 10px;
   z-index: 5;
@@ -10,24 +10,44 @@
   color: #ccc;
 }
 
-.create-project-btn:hover {
-  background-color: #334933 !important;
-  color: #ddd;
-}
-
-.create-project-btn:active {
-  background-color: #334933 !important;
-  color: #ddd;
-}
-
+.create-project-btn:hover, 
+.create-project-btn:active,
 .create-project-btn:focus {
   background-color: #334933 !important;
   color: #ddd;
 }
 
+.check-invites-btn {
+  background-color: #333349;
+  color: #ccc;
+}
+
+.check-invites-btn:hover,
+.check-invites-btn:active,
+.check-invites-btn:focus {
+  background-color: #333349 !important;
+  color: #ddd;
+}
+
+.search-projects-btn {
+  background-color: #493333;
+  color: #ccc;
+}
+
+.search-projects-btn:hover,
+.search-projects-btn:active,
+.search-projects-btn:focus {
+  background-color: #493333 !important;
+  color: #ddd;
+}
+
+
 .project-list-divider {
   background-color: #333;
-  margin: 10px 0px;
+  margin: 15px 0px !important;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .project-instance {

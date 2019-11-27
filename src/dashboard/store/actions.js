@@ -28,7 +28,7 @@ export const fetchProjects = () => async (dispatch, getState) => {
     const { data } = await axios.post(`${BASE_URL}/dashboard`, { token });
     dispatch({
       type: 'FETCH_PROJECTS',
-      payload: data.projects
+      payload: data
     });
   } catch (err) {
     throw new Error(err);
