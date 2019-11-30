@@ -4,6 +4,7 @@ import editorController from '@workspace/editor/controller';
 
 const Editor = () => {
   let editor = null;
+  const file = useSelector(state => state.workspace.editor);
   const user = useSelector(state => state.general.user);
   const editorRef = useRef();
   const settings = {
@@ -15,13 +16,15 @@ const Editor = () => {
   };
 
   useEffect(() => {
-    if (editorRef.current) {
-      editor = editorController(editorRef, settings, user);
+    if (file.kind === 'file') {
+      if (editorRef.current) {
+        editor = editorController(editorRef, settings, user);
+      }
     }
     return () => {
-      editor.dispose();
+      if (editor) editor.dispose();
     };
-  }, []);
+  }, [file]);
 
   return (
     <div className="scrollable-parent full">
