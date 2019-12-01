@@ -9,8 +9,8 @@ var ArrayAtomList = /** @class */ (function () {
   /**
    * Creates an instange of ArrayAtomList<T>.
    */
-  function ArrayAtomList() {
-    this.atoms = [];
+  function ArrayAtomList(atoms) {
+    this.atoms = atoms || [];
   }
   /**
    * @inheritdoc

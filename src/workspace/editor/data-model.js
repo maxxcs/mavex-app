@@ -4,7 +4,7 @@ import { Ident } from './data/idents/Ident';
 export default class DataModel {
   constructor(uniqueId, content, generator) {
     this.crdt = new KSeq(uniqueId, content, generator);
-    // window.crdt = this.crdt;
+    window.crdt = this.crdt;
   }
 
   executeChange(change) {
@@ -35,5 +35,17 @@ export default class DataModel {
 
   getValue() {
     return this.crdt.toArray().join('');
+  }
+
+  getAtom(pos) {
+    return this.crdt.atoms.get(pos);
+  }
+
+  getAtoms() {
+    return this.crdt.atoms;
+  }
+
+  static transformIdent(time, path) {
+    return new Ident(time, path);
   }
 }

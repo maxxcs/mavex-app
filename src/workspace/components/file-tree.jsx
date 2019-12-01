@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Treebeard } from 'react-treebeard';
 import { Button, Icon } from 'rsuite';
-import { showActionModal, openFile } from '@workspace/store/actions';
+import { showActionModal, openFile, closeFile } from '@workspace/store/actions';
 
 import ActionModal from './action-modal';
 
@@ -18,6 +18,7 @@ const style = {
 const FileTree = () => {
   const dispatch = useDispatch();
   const project = useSelector(state => state.general.project);
+  const editor = useSelector(state => state.workspace.editor);
   const [data, setData] = useState({});
   const [cursor, setCursor] = useState(null);
 
@@ -53,7 +54,11 @@ const FileTree = () => {
     setCursor(node);
     setData(Object.assign({}, data));
     console.log(node);
-    dispatch(openFile(project._id, node));
+
+    if (node.kind === 'file') {
+      if (editor.file.id) dispatch(closeFile(editor.file.id));
+      dispatch(openFile(project._id, node));
+    }
   };
 
   const handleActionModal = () => {

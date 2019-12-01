@@ -20,3 +20,14 @@ export const openFile = (projectId, file) => async (dispatch, getState) => {
     throw new Error(err);
   }
 }
+
+export const closeFile = fileId => async (dispatch, getState) => {
+  try {
+    const token = getToken();
+    client.emit('file:close', { token, fileId });
+    dispatch({ type: 'CLOSE_FILE' });
+
+  } catch (err) {
+    throw new Error(err);
+  }
+}

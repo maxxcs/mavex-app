@@ -12,7 +12,7 @@ export const userLogout = () => ({
   type: 'USER_LOGOUT'
 });
 
-export const joinProject = (projectId) => async (dispatch, getState) => {
+export const joinProject = projectId => async (dispatch, getState) => {
   try {
     const token = getToken();
     const { data } = await axios.post(`${BASE_URL}/dashboard/join-project`, { projectId, token });
@@ -26,7 +26,18 @@ export const joinProject = (projectId) => async (dispatch, getState) => {
   }
 };
 
+export const closeProject = () => async (dispatch, getState) => {
+  try {
+    client.emit('project:leave');
+    dispatch({ type: 'CLOSE_PROJECT' });
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
+
 export const updateProjectFiles = files => ({
   type: 'UPDATE_PROJECT_FILES',
   payload: files
 });
+

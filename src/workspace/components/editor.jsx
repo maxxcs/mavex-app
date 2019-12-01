@@ -4,21 +4,16 @@ import editorController from '@workspace/editor/controller';
 
 const Editor = () => {
   let editor = null;
-  const file = useSelector(state => state.workspace.editor);
-  const user = useSelector(state => state.general.user);
   const editorRef = useRef();
-  const settings = {
-    value: '',
-    language: 'javascript',
-    theme: 'vs-dark',
-    renderFinalNewline: true,
-    automaticLayout: true,
-  };
+
+  const user = useSelector(state => state.general.user);
+  const file = useSelector(state => state.workspace.editor.file);
+  const settings = useSelector(state => state.workspace.editor.settings);
 
   useEffect(() => {
     if (file.kind === 'file') {
       if (editorRef.current) {
-        editor = editorController(editorRef, settings, user);
+        editor = editorController(editorRef, settings, user, file);
       }
     }
     return () => {

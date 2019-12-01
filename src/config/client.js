@@ -6,7 +6,7 @@ Alert.config({ duration: 3000 });
 
 import { updateProjectFiles } from '@general/store/actions'
 
-client.on('server:broadcast', (data) => {
+client.on('server:broadcast', data => {
   // Alert.info(data);
 });
 

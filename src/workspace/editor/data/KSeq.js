@@ -18,7 +18,7 @@ var KSeq = /** @class */ (function () {
   function KSeq(name, atoms, identGenerator) {
     this.name = name;
     this.time = 0;
-    this.atoms = atoms || new storage_1.ArrayAtomList();
+    this.atoms = new storage_1.ArrayAtomList(atoms);
     this.removed = new idents_1.IdentSet();
     this.identGenerator = identGenerator || new idents_1.LSEQIdentGenerator();
   }

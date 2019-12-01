@@ -14,6 +14,8 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         project: action.payload
       };
+    case 'CLOSE_PROJECT':
+      return { ...state, project: null }
     case 'UPDATE_PROJECT_FILES':
       return {
         ...state,

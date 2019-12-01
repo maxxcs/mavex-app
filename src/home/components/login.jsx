@@ -6,6 +6,7 @@ import {
 } from 'rsuite';
 
 import { login } from '@config/auth';
+import client from '@config/client';
 import { BASE_URL } from '@settings';
 
 
@@ -39,6 +40,7 @@ const Login = ({ changeDisplay }) => {
           setBusy(false);
           Alert.success('Signed in successfully.');
           login(data.token);
+          client.emit('user:authenticate', { token: data.token });
           history.push('/dashboard');
         } else {
           setBusy(false);
