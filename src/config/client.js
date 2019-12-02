@@ -27,8 +27,9 @@ client.on('file:created', async ({ files }) => {
   store.dispatch(updateProjectFiles(files));
 });
 
-client.on('file:deleted', async data => {
-
+client.on('file:deleted', async ({ files }) => {
+  console.log(files);
+  store.dispatch(updateProjectFiles(files));
 });
 
 client.on('file:userJoined', async data => {

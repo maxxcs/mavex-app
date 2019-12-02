@@ -31,3 +31,14 @@ export const closeFile = fileId => async (dispatch, getState) => {
     throw new Error(err);
   }
 }
+
+export const deleteFile = (projectId, fileId) => async (dispatch, getState) => {
+  try {
+    const token = getToken();
+    client.emit('file:delete', { token, projectId, fileId });
+    dispatch({ type: 'CLOSE_FILE' });
+
+  } catch (err) {
+    throw new Error(err);
+  }
+}

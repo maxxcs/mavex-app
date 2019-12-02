@@ -19,12 +19,13 @@ function editorController(editorRef, settings, user, file) {
 
   const handleInputFromEditorToAdapter = evt => {
     if (preventEmit) return;
-    // console.log(evt);
+    console.log(evt);
     const { changes } = evt;
     adapter.postMessage(changes);
   };
 
   const handleDataFromAdaptar = ({ data }) => {
+    console.log(data);
     const change = storage.executeChange(data);
     client.emit('file:write', { change, fileId: file.id });
   };

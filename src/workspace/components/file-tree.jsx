@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Treebeard } from 'react-treebeard';
 import { Button, Icon } from 'rsuite';
-import { showActionModal, openFile, closeFile } from '@workspace/store/actions';
+import { showActionModal, openFile, closeFile, deleteFile } from '@workspace/store/actions';
 
 import ActionModal from './action-modal';
 
@@ -61,27 +61,36 @@ const FileTree = () => {
     }
   };
 
-  const handleActionModal = () => {
-    dispatch(showActionModal(true));
+  const handleActionModal = (action) => {
+    switch (action) {
+      case 'create-file':
+        return dispatch(showActionModal(true));
+      case 'create-folder':
+        return dispatch(showActionModal(true));
+      case 'remove':
+        return dispatch(deleteFile(project._id, cursor.id));
+      default:
+        return;
+    }
   };
 
   return (
     <>
       <div className="flex-column full file-tree">
         <div className="flex-row file-tree-actions" style={{ backgroundColor: "#222" }}>
-          <Button appearance="subtle" onClick={() => handleActionModal()}>
+          <Button appearance="subtle" onClick={() => handleActionModal('create-file')}>
             <span style={{ margin: '0px 3px' }}>
               <Icon icon="file" />
             </span>
             <span style={{ margin: '0px 3px', fontSize: '12px' }}>New file</span>
           </Button>
-          <Button appearance="subtle">
+          <Button appearance="subtle" onClick={() => handleActionModal('create-folder')}>
             <span style={{ margin: '0px 3px' }}>
               <Icon icon="folder" />
             </span>
             <span style={{ margin: '0px 3px', fontSize: '12px' }}>New folder</span>
           </Button>
-          <Button appearance="subtle">
+          <Button appearance="subtle" onClick={() => handleActionModal('remove')}>
             <span style={{ margin: '0px 3px' }}>
               <Icon icon="close" />
             </span>
